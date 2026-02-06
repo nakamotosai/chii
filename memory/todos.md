@@ -5,6 +5,8 @@
 ## 🔥 Active（进行中）
 - [ ] （待捕获）
 
+- [ ] Replace the temporary TLS artifacts under /etc/letsencrypt/live/searxng with valid certificates, free port 80 from openresty (or move nginx to another port), and reload nginx so HTTPS can proxy to Gunicorn.
+
 - [ ] Hooked session 0dfbf5d1-f2d6-41de-bb35-fec9c4507c47 (pending your manual summary).
 
 - [ ] Hooked session d984de7e-df9d-4088-b90b-990e14b21a5d (pending your manual summary).
@@ -57,8 +59,30 @@
 
 - [ ] Hooked session cba505d1-2fa3-44e9-b8fe-06d251ae66f6 (pending your manual summary).
 
+- [ ] Hooked session 28e17d65-b438-48ea-a4db-70fcb2d74d21 (pending your manual summary).
+
+- [ ] Hooked session f45eb3f0-07b0-441f-ab64-fb61fad78966 (pending your manual summary).
+
+- [ ] Hooked session 54a9ecab-5274-4af0-8801-35931e4232d8 (pending your manual summary).
+
+- [ ] Hooked session 73ce2b51-52c6-4109-a487-ba427923cdfd (pending your manual summary).
+
+- [ ] Hooked session ff515afd-417d-424e-b547-9c8e55fc3983 (pending your manual summary).
+
+- [ ] Hooked session 5d06fc4c-909f-48ea-949b-91044d798d0b (pending your manual summary).
+
+- [ ] Hooked session 45c10a8f-83a3-4978-aa79-a733c78d5eff (pending your manual summary).
+
 ## ⏳ Waiting（等主人/等外部条件）
 - [ ] （待捕获）
 
 ## ✅ Done（已完成，保留最近 20 条）
 - [x] Hooked session 6e6b41b2-8f33-4f19-a869-5c0bea8e2afd (summary captured by sub-agent; memory/todos updated 2026-02-05).
+
+- [x] 更新 AGENTS.md + memory 规则：所有指令任务都写入 memory/todos.md（完成后打钩但保留），并同步到今日记忆。
+
+- [x] 将 memory-lite 与 memory-curator 两项记忆管理技能安装到 workspace/skills，以便随时管理记忆文件与摘要。
+
+- [x] 把原有的其他 skill 从 `skills-local/` 迁回 `skills/`，确保所有技能都在主目录下可用。
+
+- [x] 安装 `local-websearch`（自托管 SearXNG）与 `ddg-search`（DuckDuckGo）技能，并在 `~/.bashrc` 里写入 `SEARXNG_URL=http://127.0.0.1:8888` 让搜索脚本直接连本地实例。
