@@ -1,0 +1,8 @@
+{
+  "groupAgents": {
+    "soloMode": true,
+    "allowSubagents": false,
+    "defaultWorkspacePrefix": "telegram-<group_id>-workspace",
+    "note": "All Telegram group agents must operate alone, with no associated background subagents. Add new group agents by creating their workspace under the default prefix."
+  }
+}
