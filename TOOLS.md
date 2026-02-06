@@ -18,6 +18,7 @@
 - `openclaw-backup`：备份 workspace/skills 之类的工具，常配合 `snapshot` 和 `restore` 命令。
 - `sonoscli`：控制 Sonos 设备（有专属 `sonos` shell 命令），平日播放音乐也能召唤。
 - `telegram-setup`：管理 telegram agent 的配置、Webhook，放在这里方便查 `config` 目录里的参数。
+- `xhs-jewelry-copywriter`：将珠宝产品信息自动改写为小红书风格的标题+正文+标签，包含参数解析与单位校验。
 
 > 需要用哪个技能就告诉我名字，我可以直接 `cd skills/<name>` 或 `python3 scripts/...` 来示范。
 

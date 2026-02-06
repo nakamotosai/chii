@@ -85,6 +85,8 @@
 - [ ] （待捕获）
 
 ## ✅ Done（已完成，保留最近 20 条）
+- [x] 创建并加载 xhs-jewelry-copywriter 技能：珠宝产品信息自动改写为小红书标题+正文+标签，含参数解析与单位校验。（2026-02-06）
+
 - [x] Installed Context7 MCP server, created context7 user/dirs, systemd service, env placeholder `/etc/context7/context7.env`, and exposed port 3000; remaining manual step: set `CONTEXT7_API_KEY` before restarting. (2026-02-06)
 
 - [x] Hooked session 6e6b41b2-8f33-4f19-a869-5c0bea8e2afd (summary captured by sub-agent; memory/todos updated 2026-02-05).
