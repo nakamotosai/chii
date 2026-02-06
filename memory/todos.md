@@ -29,6 +29,18 @@
 
 - [ ] Hooked session 32505596-3a59-440c-b47e-d8398e595c82 (pending your manual summary).
 
+- [ ] Hooked session 20868338-ceef-4d84-aec7-01a444e5b99b (pending your manual summary).
+
+- [ ] Hooked session 029d8b7e-5d4b-4378-a6ed-de23ccd716d7 (pending your manual summary).
+
+- [ ] Hooked session 30070dc5-e6ca-4541-9d88-e2262d3a5abe (pending your manual summary).
+
+- [ ] Hooked session cd889777-d0e8-44e9-9ab9-3f30e3772b85 (pending your manual summary).
+
+- [ ] Hooked session e09170f9-2f35-42f8-b6ce-d1b9f4bd9a06 (pending your manual summary).
+
+- [ ] Hooked session 83144fd8-238e-4373-b802-7bf7d9ce5c5d (pending your manual summary).
+
 ## ⏳ Waiting（等主人/等外部条件）
 - [ ] （待捕获）
 
