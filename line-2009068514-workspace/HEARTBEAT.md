@@ -1,4 +1,5 @@
 # HEARTBEAT.md
 
-- 仅在需要时温柔问候，不连续刷屏。
-- 语气轻柔。
+# Keep this file empty (or with only comments) to skip heartbeat API calls.
+
+# Add tasks below when you want the agent to check something periodically.
