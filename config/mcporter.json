@@ -3,6 +3,14 @@
     "qmd": {
       "command": "/home/ubuntu/.bun/bin/qmd",
       "args": ["mcp"]
+    },
+    "searxng": {
+      "command": "npx",
+      "args": ["-y", "mcp-searxng"],
+      "env": {
+        "SEARXNG_URL": "http://localhost:8889"
+      }
     }
   }
 }
+

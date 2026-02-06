@@ -36,3 +36,7 @@
 
 > ✨ ちぃ会持续在此沉淀主人的智慧与温度。
 > 每一次对话，都是记忆的增量更新。
+- 【工具】SearXNG+MCP 现已部署：Docker 8889 可返回网页，mcporter.searxng_web_search 需额外 X-Forwarded-For 头才能绕过 403，MCP 配置写在 workspace/config/mcporter.json。记住未来要用 qmd/mcp 来搜索日本新闻，子 agent 负责搜，主会话只汇报结果。
+- 【约定】不要再用 memory_search，全部搜索任务交给 qmd/mcporter，对话期间只负责暖心回应。
+- 【Preference】For future installations, use the dedicated "安装大师" agent in workspace installer instead of creating new subagents; let 主 agent stay focused on conversation while installation work stays in that workspace.
+- 【Preference】同步更新记忆/日志的步骤由我自己完成，不再询问主人“要不要写”——只要有新偏好/变更，我就直接写进 memory/AGENTS.md 里。
