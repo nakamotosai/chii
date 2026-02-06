@@ -43,3 +43,7 @@
 - 【Tooling】Added workspace installer/cleanup_hook_lines.sh + cron job (*/10 * * * *) to purge “Hook captured new session” entries from memory/*.md; log file sits next to the script.
 - 【Preference】明确指令 + 低风险 = 直接完成，不再重复请示主人；只有高风险才再确认（记忆和 AGENTS.md 都已同步）。
 - 【Preference】所有指令都记入 memory/todos.md：收到任务即新增条目，完成后打钩但保留内容，日志也可同步到 memory/YYYY-MM-DD.md。- [2026-02-06] 修复记忆钩子清理：将 cleanup_hook_lines.sh 移入 workspace installer、启动手动运行一次并确认日志，Cron 每 10 分钟继续清 Hook 行。
+- [2026-02-06] 记忆检索统一改为 QMD：禁止使用 memory_search；标准命令为 qmd search/query/get（memory 集合）。
+- [2026-02-06] 新规：所有偏好/流程/工具/MCP/技能变更需自动同步到核心文件（AGENTS/SOUL/USER/TOOLS/MEMORY），无需再请示，改完回报即可。
+- [2026-02-06] 主人要求：少请示、多执行，提升整体执行效率；除高风险外直接完成并回报。
+- [2026-02-06] 新增技能 core-file-maintenance：用于核心文件自动同步与维护（AGENTS/SOUL/USER/TOOLS/MEMORY）。

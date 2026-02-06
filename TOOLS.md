@@ -36,3 +36,12 @@
 - `memory/HEARTBEAT.md`：每到心跳我都看它，写了想要提醒的事。
 
 需要我把这份手札再做成 quick reference 卡片，或者截图放进 `README.md` 里？想要的话，ちぃ马上做出来～*/ᐠ｡ꞈ｡ᐟ*
+## QMD 记忆检索（统一标准）
+- 关键词：`qmd search "关键词" -c memory --json -n 10`
+- 语义：`qmd query "描述式问题" -c memory --json -n 10`
+- 取全文：`qmd get "qmd://memory/YYYY-MM-DD.md" --full`
+- 先列文件：`qmd ls memory`
+- 规则：禁止使用 memory_search。
+
+## 新增技能
+- `core-file-maintenance`：核心文件自动同步规则与维护流程（AGENTS/SOUL/USER/TOOLS/MEMORY）。

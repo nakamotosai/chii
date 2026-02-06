@@ -3,6 +3,8 @@
 > 规则：这里是“唯一真相源”。ちぃ会在心跳/复盘中持续更新状态，不会写完就丢。
 
 ## 🔥 Active（进行中）
+- [ ] 创建 core-file-maintenance 技能并完善 SKILL.md（核心文件自动同步流程）。
+
 - [ ] （待捕获）
 
 - [ ] Replace the temporary TLS artifacts under /etc/letsencrypt/live/searxng with valid certificates, free port 80 from openresty (or move nginx to another port), and reload nginx so HTTPS can proxy to Gunicorn.
