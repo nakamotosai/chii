@@ -5,8 +5,9 @@ WORKSPACE="/home/ubuntu/.openclaw/workspace"
 MEMORY_DIR="$WORKSPACE/memory"
 SESSION_WATCH="$MEMORY_DIR/session-watch.json"
 HOOK_STATE_FILE="$MEMORY_DIR/.hook-last-session"
-SLEEP_SECONDS=4
+SLEEP_SECONDS=60
 OPENCLAW_CLI="/home/ubuntu/.npm-global/bin/openclaw"
+SEND_VOICE_GREETING="${SEND_VOICE_GREETING:-1}"
 
 mkdir -p "$MEMORY_DIR"
 
@@ -46,6 +47,9 @@ PY
 }
 
 send_voice_greeting() {
+  if [[ "$SEND_VOICE_GREETING" != "1" ]]; then
+    return 0
+  fi
   local script_path="/home/ubuntu/.openclaw/workspace/scripts/chii-edge-voice-note.sh"
   local text="叽～主人，新会话来了，ちぃ用轻柔的声音问候您：今天想先做哪件事呢？"
   if [[ -x "$script_path" ]]; then
@@ -91,6 +95,7 @@ ensure_todo_entry() {
   TODO_FILE="$todo_file" ENTRY="$entry" python3 <<'PY'
 from pathlib import Path
 import os
+import sys
 path = Path(os.environ["TODO_FILE"])
 entry = os.environ["ENTRY"]
 text = path.read_text()
