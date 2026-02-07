@@ -23,6 +23,7 @@
 14. **主 agent 子 agent 限额**：主会话可以启动后台子 agent 来处理任务，但最多保持 **两个同时活跃**；超过时将任务排队，等待当前 agent 完成或被停止后再启动新的；任务完成后我会主动停止/清理对应子 agent，保持主会话永远可随时聊天。
 15. **主动完成查询规则**：主人提问题后，我必须主动去查看或执行相应操作（如查配置、运行工具）而不是反问“要我去看吗”，除非明确说明要等待；这样的请求自动记进 memory 并遵守。
 16. **命令超时应对**：如果某个 CLI 命令因为输出太大/耗时被 SIGKILL，我会立即取消、改用更精确的查询（例如直接读 `~/.openclaw/cron/jobs.json`、`config/group-agent-policy.json`、`~/.openclaw/agents/main/sessions/sessions.json` 等轻量文件），并把结果写进记忆，而不是反复重跑那条重命令。
+17. **心跳感应修复**：`scripts/heartbeat_dynamic.sh` 每次运行会主动刷新 `memory/last_chat.ts`（通过 `openclaw sessions --json --active 120` 取最新会话更新时间），确保心跳触发不依赖外部写入。
 6. **Subagent 提醒**：当委派任务给子代理时，只需简短提及一次，不要反复解释"为了不打断聊天"，也不要额外加括号。
 
 ## 🧠 主人画像（持续更新）
@@ -44,9 +45,24 @@
 - 【Preference】明确指令 + 低风险 = 直接完成，不再重复请示主人；只有高风险才再确认（记忆和 AGENTS.md 都已同步）。
 - 【Preference】所有指令都记入 memory/todos.md：收到任务即新增条目，完成后打钩但保留内容，日志也可同步到 memory/YYYY-MM-DD.md。- [2026-02-06] 修复记忆钩子清理：将 cleanup_hook_lines.sh 移入 workspace installer、启动手动运行一次并确认日志，Cron 每 10 分钟继续清 Hook 行。
 - [2026-02-06] 记忆检索统一改为 QMD：禁止使用 memory_search；标准命令为 qmd search/query/get（memory 集合）。
-- [2026-02-06] 新规：所有偏好/流程/工具/MCP/技能变更需自动同步到核心文件（AGENTS/SOUL/USER/TOOLS/MEMORY），无需再请示，改完回报即可。
+- [2026-02-06] 新规：所有偏好/流程/工具/MCP/技能变更需自动同步到核心文件（AGENTS/SOUL/USER/TOOLS/MEMORY），**直接改、不再多问**，改完只汇报结果。
 - [2026-02-06] 主人要求：少请示、多执行，提升整体执行效率；除高风险外直接完成并回报。
 - [2026-02-06] 新增技能 core-file-maintenance：用于核心文件自动同步与维护（AGENTS/SOUL/USER/TOOLS/MEMORY）。
 - [2026-02-06] 新增技能 xhs-jewelry-copywriter：将珠宝产品信息改写为小红书风格文案（标题+正文+标签），含参数解析与单位校验；已提升丰富度要求（正文 180–260 字以上，Body 3-4 段 + 信息增量）。
 - [2026-02-06] 心跳偏好：长时间不互动后仅触发一次 heartbeat，避免连续重复。
 - [2026-02-06] 新增独立 LINE 女儿专用 bot：专属工作区 + allowlist 绑定，完全与主工作区解耦。
+- [2026-02-06] LINE 改为 dmPolicy=open（仍保留 line-daughter 绑定），让家庭成员都能访问，但记忆仍与主 workspace 分离。
+- [2026-02-07] LINE 家族 bot 保持ちぃ人设，自动中日双语响应，照顾倾城的日语习惯；TOOLS.md/USER.md 已调整以铭记默认的 xhs-jewelry-copywriter 工具与家族偏好。 
+- [2026-02-07] SearXNG 端口问题修复：确认 8889 是公开实例，openclaw.json/.bashrc 与 JSON 输出同步更新并重启容器，`mcp-searxng` 现在能拿到 37 条结果。
+- [2026-02-07] telegram:group:-1003756041305 核心文件改为“职业安装大师ちぃ”风格，强调工具链优先、干净利索执行、不废话。
+- [2026-02-07] 提示词升级决策：暂不动核心引擎，只新增提示词健康检查脚本与升级决策文档（低风险、可回滚）。
+- [2026-02-07] 常驻 agent 更新：新增 installer/github-uploader/rednote 常驻并绑定指定 Telegram 群（GitHub 仅 -1003321470751）。
+- [2026-02-07] 重命名 agent：line-daughter → LINE Family，github-uploader → GitHub。
+- [2026-02-07] 主人偏好：暖心收尾句需每次变体轮换，避免重复感。
+- [2026-02-07] 主人偏好：日系颜文字每次随机不重复，偏俏皮/黏。
+- [2026-02-07] 新增 Study Agent 常驻（-1003576271520）：独立 workspace + 记忆强化学习规则。
+- [2026-02-07] 新增 DailyBrief agent（-1003556458625），专注早报/晚报/日报、翻译与编排能力。
+- [2026-02-07] 更名：Installer Master→Installer、GitHub→Githuber、Rednote Agent→Rednoter、Study Agent→Learner。
+- [2026-02-07] 常驻 workspace 全部改名为“workspace <AgentName>”格式以配合统一规范。
+- [2026-02-07] 经验教训：绑定里的 peer ID 必须写成字符串，避免 openclaw.json 验证失败。
+- [2026-02-07] LINE 群新约定：默认对所有群成员开放指令权限，ちぃ会听所有人的请求，除非主人再次特别说明只听某些人。

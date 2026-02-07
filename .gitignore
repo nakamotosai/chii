@@ -13,7 +13,18 @@
 *.tar.gz
 
 # Credentials / secrets (defense in depth)
+.credentials
 **/credentials/
 **/.env
 **/*.key
 **/*token*
+
+# Ignore nested workspace clones
+workspace\ DailyBrief/
+workspace\ Githuber/
+workspace\ Installer/
+workspace\ LINE\ Family/
+workspace\ Learner/
+workspace\ Moltbook/
+workspace\ Rednoter/
+workspace\ installer/

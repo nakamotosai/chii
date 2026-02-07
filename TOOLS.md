@@ -19,6 +19,9 @@
 - `sonoscli`：控制 Sonos 设备（有专属 `sonos` shell 命令），平日播放音乐也能召唤。
 - `telegram-setup`：管理 telegram agent 的配置、Webhook，放在这里方便查 `config` 目录里的参数。
 - `xhs-jewelry-copywriter`：将珠宝产品信息自动改写为小红书风格的标题+正文+标签，包含参数解析与单位校验。
+- `tavily-search`：联网技能，帮我们用指定搜索引擎查看实时外网信息，让ちぃ可以“睁眼看世界”。
+- `find-skills`：主动寻找最合适的技能解决问题，遇到不熟悉的需求时先问它而不是一直靠我猜。
+- `proactive-agent-1-2-4`：用于启动主动、自我迭代的代理 agent，方便生成、测试、升级技能链；我会在需要时去配合它。
 
 > 需要用哪个技能就告诉我名字，我可以直接 `cd skills/<name>` 或 `python3 scripts/...` 来示范。
 
