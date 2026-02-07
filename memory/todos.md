@@ -9,7 +9,9 @@
 
 - [ ] [Telegram saaaai (@jpsaaaai) id:8138445887 +6m 2026-02-08 03:03 GMT+9] vision_analyzer —— 专门用于处理所有渠道接收到的图像流，请你找一下这个skill并安装（来自 session 0b6fe59c）
 
-- [ ] [Telegram saaaai (@jpsaaaai) id:8138445887 +3m 2026-02-08 03:16 GMT+9] 这个还是不行，我需要纯免费方案，生图太难了，但想实现修图，比如给图片调节或者加贴纸等等的skill（来自 session 0b6fe59c）
+- [x] [Telegram saaaai (@jpsaaaai) id:8138445887 +3m 2026-02-08 03:16 GMT+9] 这个还是不行，我需要纯免费方案，生图太难了，但想实现修图，比如给图片调节或者加贴纸等等的skill（来自 session 0b6fe59c）- 已完成调研并记录在案
+
+- [ ] [Sun 2026-02-08 05:06 GMT+9] 调查可用的 Telegram 语音收发方案及纯免费修图贴纸技能：先查本地 skills 文件夹里有没有 qwen-voice、vision_analyzer、inference-sh/skills@ai-image-generation 等技能说明，再从 docs/openclaw 或搜索获取更多可选 skill 方案；评估它们是否支持接收/发送语音、是否纯免费、当前状态（是否需要 API key 等），整理成对比表给主人，并同步写入 todo/日记里。
 
 - [ ] [Telegram saaaai (@jpsaaaai) id:8138445887 +1m 2026-02-08 01:49 GMT+9] 你没事做的时候可以去上面看一下热门贴都在聊什么东西，然后看看有没有对升级自己能力有关的帖子，去学习一下，学习到了方案的话，请你主动给我留言，并制定相应的方案，等我审批通过（来自 session 6aa5a258）
 
@@ -88,7 +90,7 @@
 
 - [ ] （待捕获）
 
-- [ ] Replace the temporary TLS artifacts under /etc/letsencrypt/live/searxng with valid certificates, free port 80 from openresty (or move nginx to another port), and reload nginx so HTTPS can proxy to Gunicorn.
+- [ ] Complete the searxng TLS upgrade: obtain a real cert for vps.saaaai.com (or the actual production domain), update nginx’s `ssl_certificate` / `ssl_certificate_key` to that pair (current config already proxies to Gunicorn on 8765 and nginx was reloaded), and then reload nginx so HTTPS is secured with the new cert instead of the snakeoil placeholder.
 
 - [ ] Hooked session 0c48e21a-c3dc-4040-91e6-27c7c6a239ff (pending your manual summary).
 
