@@ -74,3 +74,4 @@
 - [2026-02-07] Learner 演示图升级：新增 remote render 脚本 + quick reference 说明 Kroki 远端渲染。
 - [2026-02-07] Agents policy: Learner & Moltbook now default to qwen-portal/coder-model.
 - [2026-02-07] Learner完成 OpenClaw 官方文档深度学习，摘要/来源见 `skills/learner-docs/references/summary.md` 与 `sources.md`，并生成知识库卡片与流程图。
+- [2026-02-07] 模型极简：只保留 qwen-portal/coder-model，其他 oauth/login 记录清空。
