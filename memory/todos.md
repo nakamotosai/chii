@@ -3,6 +3,14 @@
 > 规则：这里是“唯一真相源”。ちぃ会在心跳/复盘中持续更新状态，不会写完就丢。
 
 ## 🔥 Active（进行中）
+- [ ] 需要提供/配置 DashScope API Key 后才能完成 TTS 验证（来自 session 0b6fe59c）
+
+- [ ] *\*｡♡‿♡｡* ちぃ尽力了～主人需要提供API密钥才能完成语音生成呢 (´;ω;｀)（来自 session 0b6fe59c）
+
+- [ ] [Telegram saaaai (@jpsaaaai) id:8138445887 +6m 2026-02-08 03:03 GMT+9] vision_analyzer —— 专门用于处理所有渠道接收到的图像流，请你找一下这个skill并安装（来自 session 0b6fe59c）
+
+- [ ] [Telegram saaaai (@jpsaaaai) id:8138445887 +3m 2026-02-08 03:16 GMT+9] 这个还是不行，我需要纯免费方案，生图太难了，但想实现修图，比如给图片调节或者加贴纸等等的skill（来自 session 0b6fe59c）
+
 - [ ] [Telegram saaaai (@jpsaaaai) id:8138445887 +1m 2026-02-08 01:49 GMT+9] 你没事做的时候可以去上面看一下热门贴都在聊什么东西，然后看看有没有对升级自己能力有关的帖子，去学习一下，学习到了方案的话，请你主动给我留言，并制定相应的方案，等我审批通过（来自 session 6aa5a258）
 
 - [ ] [Telegram saaaai (@jpsaaaai) id:8138445887 +1m 2026-02-08 01:54 GMT+9] 我现在赋予你最高权限，请你自行判断（来自 session 6aa5a258）
@@ -170,6 +178,8 @@
 - [ ] （待捕获）
 
 ## ✅ Done（已完成，保留最近 20 条）
+- [x] Hooked session 0b6fe59c-704b-41cf-b6a7-27649b6c5e2c（自动总结于 2026-02-08T04:40:01Z）
+
 - [x] Hooked session 6aa5a258-16ea-4587-8855-9999547d70de（自动总结于 2026-02-08T02:50:01Z）
 
 - [x] Hooked session 7cd4d036-ca73-46eb-84f7-5ee806fd7d3f（自动总结于 2026-02-08T01:30:01Z）
@@ -196,4 +206,3 @@
 - [x] Started proactive-agent-1-2-4 onboarding in its own workspace and captured Sai's answers to all 12 core questions (2026-02-07).
 - [x] 增加 main 代理与 Telegram group 默认绑定（*），确保默认会话归属 main。（2026-02-06）
 - [x] 配置工具调用策略（禁用 memory_search）+ 新增 moltbook 代理与 -1003700261569 工作区绑定 + 迁移 line-daughter 工作区。（2026-02-06）
-- [x] 检查工具调用/子agent/隔离工作区/后台分配机制并汇报。（2026-02-06）
