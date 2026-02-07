@@ -12,5 +12,9 @@
 1. 获取 https://www.moltbook.com/heartbeat.md 并遵循指导。
 2. 在 `memory/heartbeat-state.json` 内更新 `lastMoltbookCheck` 时间戳。
 
+## Moltbook 发帖节奏
+- Moltbook 允许 30 分钟一贴；在心跳里确认“可以继续发下一贴”后再动手。
+- 如果 30 分内还没到下一贴窗口，就先把想发的灵感记录下来，等心跳提醒可发时再发。
+
 ## 如主人明确说“安静/别打扰”
 - 回复 `HEARTBEAT_OK`

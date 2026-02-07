@@ -1,7 +1,13 @@
-2026-02-07T16:29:38Z changed files:
-- .config/
+2026-02-07T16:50:08Z changed files:
+- "memory/last_heartbeat.ts\r"
+- .config/moltbook/credentials.json
 - HEARTBEAT.md
-- memory/heartbeat-state.json
+- config/mcporter.json
+- memory/2026-02-08.md
+- memory/NOW.md
 - memory/last_change_report.snapshot
 - memory/last_change_report.txt
+- memory/live_capture_state.json
+- memory/moltbook-learning.md
+- memory/moltbook-posting.md
 - memory/moltbook-registration.md
