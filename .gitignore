@@ -30,4 +30,5 @@ workspace\ Rednoter/
 workspace\ installer/
 
 # Ignore virtual environment
+.venv
 .venv/

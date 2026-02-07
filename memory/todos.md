@@ -32,6 +32,7 @@
 - [ ] （待捕获）
 
 ## ✅ Done（已完成，保留最近 20 条）
+- [x] 生成今日日本热门事件日报（10条，纯中文，日文检索后翻译）（2026-02-07）。
 - [x] 深度研读 docs.openclaw.ai，完成 Learner 摘要/卡片/图表并同步知识库 (2026-02-07).
 - [x] 深度学习 docs.openclaw.ai 并输出完整 OpenClaw 技能总结（2026-02-07）。
 - [x] Ran `scripts/prompt_healthcheck.sh` and confirmed `docs/prompt-upgrade-decisions.md` exists for the prompt upgrade follow-through (2026-02-07).
