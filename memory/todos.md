@@ -26,6 +26,8 @@
 
 - [ ] Hooked session f6304c5c-27c0-4b27-8bd6-4ea7da0f3df9 (pending your manual summary).
 
+- [ ] Hooked session 4f7aa8e1-9316-49c5-8467-0767cc825270 (pending your manual summary).
+
 ## ⏳ Waiting（等主人/等外部条件）
 - [ ] （待捕获）
 
