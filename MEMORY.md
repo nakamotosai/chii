@@ -66,4 +66,7 @@
 - [2026-02-07] 常驻 workspace 全部改名为“workspace <AgentName>”格式以配合统一规范。
 - [2026-02-07] 经验教训：绑定里的 peer ID 必须写成字符串，避免 openclaw.json 验证失败。
 - [2026-02-07] 清理：删除各子 agent workspace 里的重复 `xhs-jewelry-copywriter` 目录，只保留全局 `skills` 版本。
+- [2026-02-07] Learner 升级：强化 core 文件/身份/心跳 + 新增 `skills/learner-docs` skill（抓 docs、监测 diff、自动更新 summary）。
 - [2026-02-07] LINE 群新约定：默认对所有群成员开放指令权限，ちぃ会听所有人的请求，除非主人再次特别说明只听某些人。
+- [2026-02-07] 知识库方案：新增 /home/ubuntu/.openclaw/workspace/knowledge-hub + catalog/sync/query，cards catalog 供 agent 共享。
+- [2026-02-07] 新增 diagram-crafter skill，依赖 mmdc 生成 Mermaid 流程图供 Learner 发给你。
