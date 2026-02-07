@@ -64,3 +64,8 @@
 - 同步脚本：`/home/ubuntu/.openclaw/workspace/scripts/secrets_sync.py --export|--apply`。
 - Hook 调用需来源校验：`scripts/hooks_agent_dispatch.py` / `scripts/hooks_wake.py` 需要 `--source`（值来自 `HOOKS_SOURCE_TOKEN`）。
 
+## 子 agent 执行
+- 主会话工具禁用：只允许 sessions 工具，所有命令/文件/联网任务必须 `sessions_spawn`。
+- 子 agent 默认超时：`runTimeoutSeconds=180`；自动归档：30 分钟。
+- 辅助模板：`scripts/subagent_dispatch.py` 已包含超时要求。
+
