@@ -17,6 +17,10 @@ ERROR_PATTERNS = [
     re.compile(r"\b(error|failed|exception|invalid|unauthorized|forbidden)\b", re.IGNORECASE),
 ]
 
+IGNORED_SUMMARY_PATTERNS = [
+    re.compile(r"Unsupported channel", re.IGNORECASE),
+]
+
 
 def load_state() -> dict:
     if STATE_FILE.exists():
@@ -76,6 +80,12 @@ def is_error_summary(summary: str) -> bool:
     return any(pattern.search(summary) for pattern in ERROR_PATTERNS)
 
 
+def is_ignored_summary(summary: str) -> bool:
+    if not summary:
+        return False
+    return any(pattern.search(summary) for pattern in IGNORED_SUMMARY_PATTERNS)
+
+
 def main() -> None:
     now_ms = int(time.time() * 1000)
     cutoff_ms = now_ms - WINDOW_SEC * 1000
@@ -89,6 +99,8 @@ def main() -> None:
         summary = run.get("summary") or ""
         errorish = status != "ok" or is_error_summary(summary)
         if not errorish:
+            continue
+        if is_ignored_summary(summary):
             continue
         ts = int(run.get("ts", 0) or 0)
         if ts < cutoff_ms:
