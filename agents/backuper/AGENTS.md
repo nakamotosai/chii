@@ -64,3 +64,4 @@
   - local_sha
   - remote_sha
   - sha_match
+- 禁止调用 sessions_spawn；直接在当前会话执行上传脚本并返回最终结果。
