@@ -1,93 +1,178 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -euo pipefail
 
-# Codex Hook Script
-# Purpose: 为Codex任务提供hook机制，自动发送开始和完成通知
+# Async Codex hook runner:
+# - starts a Codex task in background
+# - no polling
+# - sends completion message directly to Telegram via openclaw CLI
 
-# 配置
-TELEGRAM_BOT_TOKEN="your_telegram_bot_token_here"
-TELEGRAM_CHAT_ID="8138445887"  # 主人ID
-CODX_WORKSPACE="/home/ubuntu/.openclaw/workspace"
+OPENCLAW_BIN="${OPENCLAW_BIN:-/home/ubuntu/.npm-global/bin/openclaw}"
+CODEX_BIN="${CODEX_BIN:-codex}"
+DEFAULT_WORKSPACE="${CODEX_WORKSPACE:-/home/ubuntu/.openclaw/workspace}"
+DEFAULT_MODEL="${CODEX_MODEL:-gpt-5.1-codex-mini}"
+DEFAULT_TARGET="${CHII_OWNER_TELEGRAM_TARGET:-8138445887}"
+JOB_DIR="${CODEX_HOOK_JOB_DIR:-/tmp/codex-hook-jobs}"
 
-# 发送Telegram通知函数
-send_telegram_notification() {
-    local message="$1"
-    local emoji="$2"
-    
-    # 如果设置了Telegram配置，则发送通知
-    if [ -n "$TELEGRAM_BOT_TOKEN" ] && [ "$TELEGRAM_BOT_TOKEN" != "your_telegram_bot_token_here" ]; then
-        curl -s -X POST "https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN/sendMessage" \
-            -d "chat_id=$TELEGRAM_CHAT_ID" \
-            -d "text=$emoji $message" \
-            -d "parse_mode=HTML" > /dev/null 2>&1
-    fi
+usage() {
+  cat <<'EOF'
+Usage:
+  codex_hook.sh --start-hook "task" [model]
+  codex_hook.sh --start --task "task" [--model MODEL] [--workspace DIR]
+                [--target TELEGRAM_ID] [--from-agent NAME] [--notify-start]
+
+Behavior:
+  - Launches codex exec in background.
+  - Does NOT poll from agent side.
+  - Sends completion directly to Telegram using `openclaw message send`.
+EOF
 }
 
-# Codex任务执行函数
-codex_with_hook() {
-    local task_description="$1"
-    local model="${2:-gpt-5.1-codex-mini}"
-    
-    echo "🔧 Codex Hook: Starting task execution"
-    
-    # 任务开始通知
-    start_notification="🚀 Codex任务开始执行
-📋 任务描述: $task_description
-⏰ 开始时间: $(date '+%Y-%m-%d %H:%M:%S')
-🤖 执行模型: $model"
-    
-    send_telegram_notification "$start_notification" "🚀"
-    
-    # 执行Codex任务（后台运行）
-    echo "📝 Executing Codex task: $task_description"
-    
-    # 使用后台进程执行Codex，不阻塞当前进程
-    (
-        # 记录任务开始时间
-        task_start_time=$(date '+%Y-%m-%d %H:%M:%S')
-        
-        # 执行Codex任务
-        cd "$CODX_WORKSPACE"
-        MODEL_SHORT="${model##*/}" 
-        codex_result=$(printf "%s\n" "$task_description" | codex exec -m "$MODEL_SHORT" --sandbox danger-full-access --dangerously-bypass-approvals-and-sandbox 2>&1)
-        
-        # 记录任务结束时间
-        task_end_time=$(date '+%Y-%m-%d %H:%M:%S')
-        
-        # 提取token使用情况
-        tokens_used=$(echo "$codex_result" | grep -o "tokens used [0-9,]*" | tail -1 || echo "无法统计")
-        
-        # 提取session ID
-        session_id=$(echo "$codex_result" | grep -o "session id: [a-f0-9-]*" | tail -1 || echo "无法获取")
-        
-        # 构建完成通知
-        completion_notification="✅ Codex任务执行完成
-📋 任务描述: $task_description
-⏰ 开始时间: $task_start_time
-⏰ 完成时间: $task_end_time
-⏱️  用时: $(dateutils.ddiff "$task_start_time" "$task_end_time" 2>/dev/null || echo "未知")
-💰 Token使用: $tokens_used
-🔗 会话ID: $session_id
-📊 执行状态: 成功
+TASK=""
+MODEL="$DEFAULT_MODEL"
+WORKSPACE="$DEFAULT_WORKSPACE"
+TARGET="$DEFAULT_TARGET"
+CHANNEL="telegram"
+FROM_AGENT="unknown-agent"
+NOTIFY_START=0
 
-📋 执行结果预览:
-$(echo "$codex_result" | head -500 | sed 's/^/   /')"
-        
-        # 发送完成通知
-        send_telegram_notification "$completion_notification" "✅"
-        
-        # 输出完整结果到文件供后续使用
-        echo "$codex_result" > "/tmp/codex_result_$(date +%s).txt"
-        
-        echo "✅ Codex task completed and notifications sent"
-    ) &
-    
-    # 返回控制权，不等待任务完成
-    echo "🔄 Codex task started in background. Hook notifications will be sent automatically."
-    echo "📝 Task: $task_description"
-    echo "⏱️  No polling - will report completion when done"
-}
-
-# 如果直接调用此脚本
-if [ "$1" = "--start-hook" ]; then
-    codex_with_hook "$2" "$3"
+if [[ $# -eq 0 ]]; then
+  usage
+  exit 1
 fi
+
+# Backward-compatible mode
+if [[ "${1:-}" == "--start-hook" ]]; then
+  TASK="${2:-}"
+  MODEL="${3:-$DEFAULT_MODEL}"
+  shift $(( $# > 2 ? 3 : $# )) || true
+else
+  while [[ $# -gt 0 ]]; do
+    case "$1" in
+      --start)
+        shift
+        ;;
+      --task)
+        TASK="${2:-}"
+        shift 2
+        ;;
+      --task-file)
+        TASK="$(cat "${2:?missing task file}")"
+        shift 2
+        ;;
+      --model)
+        MODEL="${2:?missing model}"
+        shift 2
+        ;;
+      --workspace)
+        WORKSPACE="${2:?missing workspace}"
+        shift 2
+        ;;
+      --target)
+        TARGET="${2:?missing telegram target}"
+        shift 2
+        ;;
+      --from-agent)
+        FROM_AGENT="${2:?missing agent name}"
+        shift 2
+        ;;
+      --notify-start)
+        NOTIFY_START=1
+        shift
+        ;;
+      -h|--help)
+        usage
+        exit 0
+        ;;
+      *)
+        echo "Unknown arg: $1" >&2
+        usage
+        exit 2
+        ;;
+    esac
+  done
+fi
+
+if [[ -z "$TASK" ]]; then
+  echo "ERROR: empty task" >&2
+  exit 2
+fi
+
+command -v "$CODEX_BIN" >/dev/null 2>&1 || { echo "ERROR: codex not found" >&2; exit 3; }
+command -v "$OPENCLAW_BIN" >/dev/null 2>&1 || { echo "ERROR: openclaw not found" >&2; exit 3; }
+
+mkdir -p "$JOB_DIR"
+JOB_ID="$(date -u +%Y%m%dT%H%M%SZ)-$RANDOM"
+PROMPT_FILE="$JOB_DIR/$JOB_ID.prompt.txt"
+RESULT_FILE="$JOB_DIR/$JOB_ID.result.txt"
+STATUS_FILE="$JOB_DIR/$JOB_ID.status.json"
+LOG_FILE="$JOB_DIR/$JOB_ID.log"
+
+printf "%s\n" "$TASK" > "$PROMPT_FILE"
+START_TS="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+
+notify() {
+  local text="$1"
+  "$OPENCLAW_BIN" message send --channel "$CHANNEL" --target "$TARGET" --message "$text" >/dev/null
+}
+
+if [[ "$NOTIFY_START" -eq 1 ]]; then
+  notify "[CodexHook] START job=$JOB_ID from=$FROM_AGENT model=$MODEL task=$(echo "$TASK" | tr '\n' ' ' | cut -c1-180)"
+fi
+
+(
+  set +e
+  RUN_START_EPOCH=$(date +%s)
+
+  printf '%s\n' "$TASK" | "$CODEX_BIN" exec -m "$MODEL" --sandbox workspace-write -C "$WORKSPACE" >"$RESULT_FILE" 2>&1
+  EXIT_CODE=$?
+
+  RUN_END_EPOCH=$(date +%s)
+  DURATION=$((RUN_END_EPOCH - RUN_START_EPOCH))
+  END_TS="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+
+  # Telegram text hard limit is around 4096 chars; keep margin.
+  PREVIEW="$(tail -n 80 "$RESULT_FILE" | sed 's/\x1b\[[0-9;]*m//g' | tr -d '\r' | sed 's/"/\\"/g')"
+  PREVIEW_TRIMMED="$(printf '%s' "$PREVIEW" | tail -c 2600)"
+
+  if [[ "$EXIT_CODE" -eq 0 ]]; then
+    MSG="[CodexHook] DONE\njob=$JOB_ID\nfrom=$FROM_AGENT\nmodel=$MODEL\nseconds=$DURATION\nstatus=success\nresult_file=$RESULT_FILE\n---\n$PREVIEW_TRIMMED"
+    NOTIFY_OK=1
+    notify "$MSG" || NOTIFY_OK=0
+    STATUS="success"
+  else
+    MSG="[CodexHook] DONE\njob=$JOB_ID\nfrom=$FROM_AGENT\nmodel=$MODEL\nseconds=$DURATION\nstatus=failed(exit=$EXIT_CODE)\nresult_file=$RESULT_FILE\n---\n$PREVIEW_TRIMMED"
+    NOTIFY_OK=1
+    notify "$MSG" || NOTIFY_OK=0
+    STATUS="failed"
+  fi
+
+  cat > "$STATUS_FILE" <<JSON
+{
+  "job_id": "$JOB_ID",
+  "from_agent": "$FROM_AGENT",
+  "model": "$MODEL",
+  "workspace": "$WORKSPACE",
+  "target": "$TARGET",
+  "start_ts": "$START_TS",
+  "end_ts": "$END_TS",
+  "duration_sec": $DURATION,
+  "exit_code": $EXIT_CODE,
+  "status": "$STATUS",
+  "notify_ok": $NOTIFY_OK,
+  "prompt_file": "$PROMPT_FILE",
+  "result_file": "$RESULT_FILE"
+}
+JSON
+
+  echo "job=$JOB_ID status=$STATUS exit=$EXIT_CODE notify_ok=$NOTIFY_OK" >> "$LOG_FILE"
+) >/dev/null 2>&1 &
+
+BG_PID=$!
+disown "$BG_PID" || true
+
+echo "status: accepted"
+echo "job_id: $JOB_ID"
+echo "pid: $BG_PID"
+echo "result_file: $RESULT_FILE"
+echo "status_file: $STATUS_FILE"
+echo "next: no polling needed; codex will notify telegram on completion"

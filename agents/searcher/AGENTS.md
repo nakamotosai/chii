@@ -38,3 +38,12 @@
 - 等价命令：`mcporter --config /home/ubuntu/.openclaw/workspace/config/mcporter.json <subcommand>`。
 - 接单后先执行 `mcporter --config /home/ubuntu/.openclaw/workspace/config/mcporter.json list` 自检。
 - 若 MCP 不可用，必须附命令输出证据；禁止空口说“未配置任何 MCP”。
+
+
+
+
+## Codex 异步委托（强制）
+- 长任务必须调用：`/home/ubuntu/.openclaw/workspace/scripts/codex_hook_delegate.sh "<agent_id>" "<任务>" "8138445887"`
+- 禁止轮询 codex 进度。
+- 当前会话只允许输出：`NO_REPLY`。
+- 最终结果由 codex hook 直接发 Telegram 给主人。

@@ -210,3 +210,12 @@ The goal: Be helpful without being annoying. Check in a few times a day, do usef
 ## Make It Yours
 
 This is a starting point. Add your own conventions, style, and rules as you figure out what works.
+
+
+
+
+## Codex 异步委托（强制）
+- 长任务必须调用：`/home/ubuntu/.openclaw/workspace/scripts/codex_hook_delegate.sh "<agent_id>" "<任务>" "8138445887"`
+- 禁止轮询 codex 进度。
+- 当前会话只允许输出：`NO_REPLY`。
+- 最终结果由 codex hook 直接发 Telegram 给主人。

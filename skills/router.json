@@ -75,6 +75,17 @@
         "仓库同步",
         "push失败"
       ]
+    },
+    {
+      "name": "codex-async-telegram-hook",
+      "patterns": [
+        "codex hook",
+        "不要轮询",
+        "交给codex",
+        "完成后发telegram",
+        "异步codex",
+        "自动汇报"
+      ]
     }
   ],
   "default": [

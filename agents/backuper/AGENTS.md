@@ -65,3 +65,12 @@
   - remote_sha
   - sha_match
 - 禁止调用 sessions_spawn；直接在当前会话执行上传脚本并返回最终结果。
+
+
+
+
+## Codex 异步委托（强制）
+- 长任务必须调用：`/home/ubuntu/.openclaw/workspace/scripts/codex_hook_delegate.sh "<agent_id>" "<任务>" "8138445887"`
+- 禁止轮询 codex 进度。
+- 当前会话只允许输出：`NO_REPLY`。
+- 最终结果由 codex hook 直接发 Telegram 给主人。

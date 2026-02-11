@@ -1,16 +1,16 @@
 {
   "lastSessionId": "cdd553d4-ed52-425c-bad2-0e3e2ae52633",
-  "updatedAt": 1770825602,
+  "updatedAt": 1770826802,
   "offsets": {
-    "backuper:262ea538-1b2b-495c-96f1-c0f43fb389e0": 12,
+    "backuper:262ea538-1b2b-495c-96f1-c0f43fb389e0": 28,
     "codex-hard:fdf450da-0fab-4b3f-a5ad-9d63d4354bba": 16,
     "codex-medium:0e97cd54-d81c-4e41-a3ad-18ccff07fe6d": 14,
     "free-worker:ab2acebf-8501-4849-92e0-67abf62ff58e": 6,
     "installer:01a2dd71-a3bc-4b5f-9dc7-dfb649e77b4f": 36,
-    "installer:4271759f-9947-45ad-9419-908856f482da": 8,
+    "installer:4271759f-9947-45ad-9419-908856f482da": 10,
     "learner:1fc5ef0c-276c-4672-b523-9bccc62cae4f": 12,
     "learner:b741d7cb-754f-4a71-ab61-71d03218033f": 6,
-    "learner:d1fdb44d-29ab-485b-b4a2-c5ff60b0a227": 43,
+    "learner:d1fdb44d-29ab-485b-b4a2-c5ff60b0a227": 45,
     "main:04dece60-81ec-4e5f-833d-e95df0951299": 430,
     "main:0e5f9da5-98d1-4a14-83ba-af64ae998a55": 330,
     "main:0faa8e27-bfb0-48b3-82d4-7c6c01071390": 49,
@@ -58,13 +58,16 @@
     "main:f6bbace3-6021-4077-8f2c-85c06920e880": 43,
     "main:fdaf3a44-b33c-432c-a750-072c2694c2e8": 78,
     "moltbooker:4a526a7e-6c8d-4ae7-955e-35571e6fe74b": 10,
-    "moltbooker:a8375d07-3c07-498b-86ba-ca75e461fcf8": 52,
+    "moltbooker:a8375d07-3c07-498b-86ba-ca75e461fcf8": 76,
     "moltbooker:e0766cf7-10ac-4344-8644-e5c4fed7f1f8": 8,
     "reflector:b0cc7378-dc87-49ca-a147-370ec3373643": 304,
     "reflector:bd46af8f-4b48-440f-b97c-a03631689801": 12,
     "searcher:c2b62f98-2a1f-4d5c-b800-958f23abc5d3": 8,
-    "searcher:d609ad7b-2a37-4e23-b1fc-79eddf7598bd": 10,
-    "searcher:fcbe2132-7d4a-44d9-9d52-86ae18720d2e": 67,
-    "xhs-writer:438613cf-9201-4b08-ba05-9e04cc71a0b2": 11
+    "searcher:d609ad7b-2a37-4e23-b1fc-79eddf7598bd": 16,
+    "searcher:fcbe2132-7d4a-44d9-9d52-86ae18720d2e": 70,
+    "xhs-writer:438613cf-9201-4b08-ba05-9e04cc71a0b2": 11,
+    "backuper:b810561c-b415-44c5-96f2-562860ebf0c2": 10,
+    "backuper:e4b56469-db95-4496-9a9a-ab510200ffba": 8,
+    "main:1f1df0f5-0fa3-428d-8060-349753a2cd36": 11
   }
 }
