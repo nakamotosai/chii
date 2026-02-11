@@ -1,26 +1,34 @@
 ---
 name: github-uploader-workflow
-description: "Guidance for a dedicated github-uploader agent to stage, commit, and push changes to a GitHub repository while keeping its workspace isolated. Use this skill whenever you're asked to upload files (commits, docs, configs) so you know how to interpret the request, inspect the repo, and report back."
+description: Reliable GitHub backup upload workflow for OpenClaw. Use this skill whenever user asks to backup/upload workspace to GitHub, verify push success, or fix upload failures (submodule issues, >100MB files, repo mismatch).
 ---
 
-# GitHub uploader workflow
+# GitHub Uploader Workflow
 
-## Purpose
-Make sure every github-uploader subagent knows exactly how to inspect a workspace, reconcile the requested changes, and deliver them to the configured repository without accidentally touching unrelated files.
+## 触发条件
+- 用户要求“上传 GitHub / 备份 workspace / 同步仓库 / 修复上传失败”。
+- 任何涉及 `github-backup`、`openclaw-github-sync.sh`、SHA 校验的任务。
 
-## Workflow
-## Exclude sensitive/large files
-- Always exclude secrets, tokens, credentials, and large binaries.
-- Respect .gitignore + add a local exclude list if needed (examples: *.zip, *.tar.gz, *.mp4, *.mov, *.sqlite, *.db, *.log, *.env, credentials.json).
-- If unsure, stop and ask the owner before staging.
+## 强制执行顺序
+1. 执行固定脚本：
+- `/home/ubuntu/.openclaw/workspace/scripts/openclaw-github-sync.sh`
 
-1. **Clarify the task.** Read the latest user instructions in the main session; note the target repo (URL/remote name), branch, files to include, and overall goal. Ask follow-up questions if anything is ambiguous (which files, what commit message, which branch / tag to push to).
-2. **Prepare the isolated workspace.** Change directory into the dedicated workspace (e.g., `/home/ubuntu/.openclaw/workspace`). Ensure it points to the correct Git remote; run `git status -sb` to confirm a clean baseline, and `git remote -v` to verify the repo URL.
-3. **Stage and commit changes.** Add only the files mentioned in the instructions (or other files you touched). Run `git status` again to confirm staging. Craft a concise, descriptive commit message summarizing both the files changed and the reason (if the user didn’t supply one, ask for preferences first). Commit with `git commit -m "..."`.
-4. **Push the work.** Push to the requested remote/branch (e.g., `git push origin master`). If authentication or remote configuration fails, report the exact error and say which step to fix before retrying.
+2. 读取并按模板回报结果（不得自由发挥）：
+- `status`
+- `repo`
+- `branch`
+- `local_sha`
+- `remote_sha`
+- `sha_match`
 
-## Communication rules
-- Keep the main session informed: before staging, after committing, and after pushing (success or failure). Include the remote URL, branch, and whether the push reached GitHub.
-- If there are no changes to upload, explicitly say the workspace is clean and that you’re standing by for new instructions.
-- When a push fails, explain whether the blocker is credentials, remote misconfiguration, merge conflicts, or network issues. Suggest the next action (e.g., re-authenticate, set remote, resolve conflicts).
-- Always wrap up with a concise summary of what you accomplished and what you need next.
+3. 仅当 `status: success` 且 `sha_match: yes` 才能说“上传成功”。
+
+## 禁止事项
+- 禁止执行 `git submodule deinit` / `git rm` 清理子模块来“修复上传”。
+- 禁止在 `workspace/agents/<agent>` 隔离目录冒充“全库上传”。
+- 禁止在没有 `local_sha == remote_sha` 的证据时宣称成功。
+
+## 失败时处理
+- 原样贴出脚本错误输出关键行。
+- 指明失败阶段：`sync` / `commit` / `push` / `sha_check`。
+- 给出下一步可执行动作，不得虚构“已上传”。

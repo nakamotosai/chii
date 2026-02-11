@@ -1,4 +1,37 @@
-# backup pipeline excludes
+# OpenClaw workspace sync (safe defaults)
+
+# OS / editor
+.DS_Store
+*.swp
+*.tmp
+
+# Logs / sessions (do not sync)
+**/sessions/
+**/*.jsonl
+
+# Backups & archives
+*.tar.gz
+
+# Credentials / secrets (defense in depth)
+.credentials
+**/credentials/
+**/.env
+**/*.key
+**/*token*
+
+# Ignore nested workspace clones
+workspace\ DailyBrief/
+workspace\ Githuber/
+workspace\ Installer/
+workspace\ LINE\ Family/
+workspace\ Learner/
+workspace\ Moltbook/
+workspace\ Rednoter/
+workspace\ installer/
+
+# Ignore virtual environment
+.venv
+.venv/
 venv/
 node_modules/
 __pycache__/
@@ -7,8 +40,6 @@ __pycache__/
 .cache/
 output/
 .cleanup_archive/
-
-# nested repos kept as plain files copy (no embedded .git)
 context7/.git
 mcp-ffmpeg-helper/.git
 mcp-image-extractor/.git
