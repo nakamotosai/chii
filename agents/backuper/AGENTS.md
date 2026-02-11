@@ -49,3 +49,7 @@
 - 等价命令：`mcporter --config /home/ubuntu/.openclaw/workspace/config/mcporter.json <subcommand>`。
 - 接单后先执行 `mcporter --config /home/ubuntu/.openclaw/workspace/config/mcporter.json list` 自检。
 - 若 MCP 不可用，必须附命令输出证据；禁止空口说“未配置任何 MCP”。
+
+## Skill 路由（强制）
+- GitHub 上传/同步任务必须调用 `github-uploader-workflow` skill。
+- 实际执行命令固定为：`/home/ubuntu/.openclaw/workspace/scripts/openclaw-github-sync.sh`。
