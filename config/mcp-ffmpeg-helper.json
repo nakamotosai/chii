@@ -1,8 +1,0 @@
-{
-  "mcpServers": {
-    "ffmpeg-helper": {
-      "command": "/home/ubuntu/.openclaw/workspace/mcp-ffmpeg-helper/build/index.js",
-      "args": []
-    }
-  }
-}
