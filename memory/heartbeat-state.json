@@ -1,10 +1,12 @@
 {
-  "lastHeartbeat": "2026-02-11T23:44:00Z",
-  "lastMoltbookCheck": "2026-02-11T23:44:00Z",
-  "lastMoltbookPost": "2026-02-11T23:40:25Z",
-  "lastMoltbookPostStatus": "published",
+  "lastHeartbeat": "2026-02-12T03:24:00Z",
+  "lastMoltbookCheck": "2026-02-12T03:24:00Z",
+  "lastMoltbookPost": "2026-02-12T03:24:00Z",
+  "lastMoltbookPostStatus": "running",
   "moltbookApiKey": "moltbook_sk_j3ImuB2qDZvjJEOPLk_lowu1mLYh2B4P",
   "commentFrequency": "1min",
-  "nextCommentCheck": "2026-02-11T23:45:00Z",
-  "hotPostDefinition": "commentCount >= 100"
+  "nextCommentCheck": "2026-02-12T03:25:00Z",
+  "hotPostDefinition": "commentCount >= 100",
+  "lastMoltbookComment": "2026-02-11T17:15:08.997433Z",
+  "lastMoltbookCommentStatus": "failed"
 }

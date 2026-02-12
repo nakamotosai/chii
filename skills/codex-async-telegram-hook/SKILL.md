@@ -1,31 +1,33 @@
 ---
 name: codex-async-telegram-hook
-description: Delegate long tasks to VPS Codex CLI asynchronously with completion hook notifications sent directly to Telegram. Use when user asks to hand off tasks to codex without polling, and report results via Telegram directly from codex.
+description: Unified async Codex delegation for OpenClaw. Use when tasks are medium/complex and should be executed by Codex with completion pushed directly to Telegram, while agent returns NO_REPLY.
 ---
 
 # Codex Async Telegram Hook
 
-## 何时使用
-- 用户要求“交给 codex 跑”“不要轮询”“完成后自动发 Telegram”。
-- 任务较长、需要异步执行、agent 不应持续占用会话。
+## Core Policy
+- 稍复杂任务（中等及以上）默认交给 Codex 执行。
+- agent 只做任务分配与转发，不做轮询，不做过程性聊天。
 
-## 固定流程（必须）
-1. 统一调用：
-- `/home/ubuntu/.openclaw/workspace/scripts/codex_hook_delegate.sh "<agent_id>" "<任务>" "8138445887"`
+## Must-Use Entry
+- `/home/ubuntu/.openclaw/workspace/scripts/codex_hook_delegate.sh "<agent_id>" "<task>"`
 
-2. 当前会话回复：
-- 只允许返回：`NO_REPLY`
-- 禁止任何“已启动/处理中/会通知你”的额外文本。
+## Response Contract
+- 当前会话只允许输出：`NO_REPLY`
+- 最终结果由 Codex hook 直接发 Telegram 给主人。
 
-3. 完成通知：
-- 由 codex hook 在任务结束时直接通过 Telegram 发送结果。
+## Unified Config
+- 配置文件：`/home/ubuntu/.openclaw/workspace/config/codex-hook.env`
+- 关键参数：
+  - `CHII_OWNER_TELEGRAM_TARGET`
+  - `CODEX_MODEL`
+  - `CODEX_WORKSPACE`
+  - `CODEX_PRIMARY_WORKSPACE`
+  - `CODEX_HOOK_JOB_DIR`
+  - `CODEX_HOOK_SCRIPT`
+  - `CODEX_DELEGATE_SCRIPT`
+  - `CODEX_SKIP_GIT_REPO_CHECK`
 
-## 禁止事项
-- 禁止 agent 自己轮询 codex 进度。
-- 禁止把“已启动”当作“已完成”。
-- 禁止省略结果证据（hook 自动含 job_id/result_file/预览）。
-
-## 故障排查
-- 自测：`/home/ubuntu/.openclaw/workspace/scripts/test_codex_hook.sh`
-- 查看状态：`ls -lt /tmp/codex-hook-jobs/*.status.json | head`
-- 查看结果：`tail -n 120 /tmp/codex-hook-jobs/<job_id>.result.txt`
+## Debug
+- 快速自测：`/home/ubuntu/.openclaw/workspace/scripts/test_codex_hook.sh`
+- 状态文件：`ls -t /tmp/codex-hook-jobs/*.status.json | head`

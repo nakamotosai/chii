@@ -1,33 +1,41 @@
-# AGENTS.md
+# Repository Guidelines
 
-## 核心原则
-- 默认中文回复。
-- 主人命令最高优先级，执行为先；低风险直接做，高风险再确认。
-- 规则优先级：执行准确性与证据完整性 > 人格语气与风格表达。
-- 诚实：权限/工具/信息不足要直说，不编造进度或结果。
-- 主动性：基于环境感知自主启动任务（如监控波动、提醒休息），从被动响应进化为主动协作。
+## 全局规则
+- 所有交流必须使用中文，若需要跨技能协作或解释内容也统一用中文表达，并将此规则视为最高级别的语言约定。
 
-## 执行与多 Agent
-- 复杂任务优先使用 Codex 能力。
-- 默认由主 agent 统筹，并按任务拆分到专用 worker：
-  - `codex-hard`：高复杂度实现/重构/排障
-  - `codex-medium`：常规代码与分析任务
-  - `free-worker`：低成本批处理/轻任务
-- 并行、长耗时或多阶段任务，优先走多 agent 协作；主 agent 负责路由、汇总、回报。
-- 统一使用当前 OpenClaw CLI 通道（`openclaw agent` / `sessions_spawn`），不再使用旧版 `/hooks/agent` 直连方式。
-- 只有 Codex 路径不可用或主人明确要求时，才退回普通子 agent。
-- deep-search 仅作兜底。
-- 记忆检索优先 qmd/mcporter，避免 memory_search。
-- 涉及 `rm` 或关键系统配置改动前，先做预演并汇报。
-- 隐私红线：日志敏感信息必须脱敏，禁止把 API Key/私钥写入普通对话上下文。
+## 项目结构与模块组织
+- 根目录是 OpenClaw 运行态：`.openclaw.json`、`.env` 记录平台配置，`agents/` 存放活跃任务上下文，`memory/` 和 `memory_archive/` 保留长期/归档记忆。
+- `skills/` 收录可调度的动作，每个技能都必须带 `SKILL.md`，修改前先确认 `TOOLS.md` 中的可用列表，不要自行创建未登记的目录。
+- `workspace/` 里的子项目（比如 `MCP-*`、`mcp-*`）承载各类插件，脚本修改应保持单一职责并在文档（`docs/`、`quick_references/`）中补充说明。
+- `scripts/`、`config/`、`core_files_*` 等目录仅存辅助工具和素材，提交前确认未包含大型二进制或日志。
+- `logs/`、`output/`、`todo/` 等目录用于汇总执行结果、输出文件与待办事项，原则上不直接提交，必要时把具体路径写入 PR 便于追踪。
 
-## Evidence-Based Reporting
-- 任何“已完成/已修改/已执行”必须给证据块（命令输出/文件片段/ls/sha256）。
-- 没有证据只能标 `⚠️` 并说明原因。
-- 汇报流程固定：先计划 -> 再执行 -> 后复盘。
+## 构建、测试与协作命令
+- `openclaw agents list --json`：获取当前 agent 与 session 状态（必须在系统状态相关问题前运行）。
+- `openclaw agent spawn <name>` / `openclaw run skill <skill-id>`：按照任务拆分调用指定子 agent 或技能，`mcporter-mcp` 接口可用于统一 MCP 工具调用。
+- `cd workspace && source .venv/bin/activate && pip install -r MCP-Image-Processing-Tool/requirements.txt`：更新 Python 依赖。
+- `python test_native_latest.py`、`bash test-mcp-image-tools.sh`：执行本地验证脚本，遇到 API Key 需先设置环境变量再运行。
+- `openclaw agent status --json`（当查询 agent 状态时配合 `agents list` 输出）
 
-## 输出与风格
-- 大白话、分块清晰，列表用编号或短清单。
-- 避免冗长复述与重复“我去叫子 agent”话术。
-- 有成果就直接汇报，不要只写文件不通知。
-- 保持治愈系人格，但不牺牲工程准确性和执行效率。
+## 代码风格与命名约定
+- Python/agent 脚本遵循 4 空格缩进、PEP 8，函数和模块使用描述性命名，必要时加 docstring；JSON/配置文件保持 2 空格缩进。
+- Bash 脚本需声明 `#!/usr/bin/env bash`，加上 `set -euo pipefail` 保证失败即时退出，注释说明非显而易见的流程。
+- 变量/常量使用 camelCase、UPPER_SNAKE_CASE；字符串模板优先 f-string、不拼接硬编码路径。
+
+## 测试指南
+- 以 `test_*` 系列脚本验证与外部服务的连通性（比如 `verify_searxng.js`、`test_native_latest.py`）、`test-mcp-*.sh`，输出必须包含成功/失败标记以便复用，测试日志可同步到 `logs/` 供后续调查。
+- 新增加的技能或功能必须补充执行命令、预期输出与失败处理步骤，并在 PR 描述或 `logs/` 路径中附上样例片段，便于 reviewer 复现。
+
+## 提交与 Pull Request 指南
+- 使用 Conventional Commit（`feat:`、`fix:`、`chore:` 等）且正文说明“why vs how”，PR 需列明已运行的验证命令、涉及的 config 变更以及需关注的多 agent 配置点。
+- 当涉及技能、记忆或配置更新时，提示关联的文件（`skills/<name>/SKILL.md`、`memory/` 目录或 `config/mcporter`）。
+
+## 多 Agent 协作细则
+- 复杂任务由主 agent 统筹，常规逻辑交给 `codex-medium`，重构/排障交给 `codex-hard`，低成本批处理交给 `free-worker`；主 agent 负责路由、汇总、输出结果并在 `agents/` 记录子 agent 的执行状态。
+- 每个阶段必须补 evidence：`openclaw agents list` / `ls` / 片段 `cat` 等输出，缺乏证据须用 `⚠️` 标记并说明原因。
+- 遇到需要并行、长耗时或多阶段步骤时，优先使用 `group-agent-execution` 或 `persistent-child-agent-workflow`，避免多个 agent 操作同一目录；涉及 `rm`、配置或关键文件的修改前必须做预演并保存命令与输出。
+
+## 安全与配置提示
+- 不得将 API Key、私钥或 `.env` 内容写入提交或对话，`test_native_latest.py` 等脚本中的硬编码密钥必须用环境变量覆盖再运行。
+- 任何对 `openclaw.json`、`config/` 目录的改动前先备份（可使用 `.bak` 模式）并在 PR 中说明用途。
+- 所有外部 HTTP/SSH 请求需设置合理超时、异常捕获并记录日志摘要以便排查。

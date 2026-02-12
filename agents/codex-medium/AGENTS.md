@@ -219,3 +219,10 @@ This is a starting point. Add your own conventions, style, and rules as you figu
 - 禁止轮询 codex 进度。
 - 当前会话只允许输出：`NO_REPLY`。
 - 最终结果由 codex hook 直接发 Telegram 给主人。
+
+
+## Codex 委托策略（强制）
+- 稍复杂任务（中等及以上）必须委托 Codex：`/home/ubuntu/.openclaw/workspace/scripts/codex_hook_delegate.sh "<agent_id>" "<任务>"`
+- 当前会话只允许输出：`NO_REPLY`。
+- 禁止轮询 Codex；结果由 Codex 完成后直接发 Telegram 给主人。
+- agent 角色定位：传话筒/任务分配者，不承担复杂执行主体。

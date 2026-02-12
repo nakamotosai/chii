@@ -81,7 +81,9 @@
       "patterns": [
         "codex hook",
         "不要轮询",
+        "中等任务",
         "交给codex",
+        "复杂任务",
         "完成后发telegram",
         "异步codex",
         "自动汇报"
