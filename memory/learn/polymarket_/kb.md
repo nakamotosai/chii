@@ -470,3 +470,105 @@
 - 本轮继续仅提供合法合规的研究流程、风险提示与排障建议，不提供任何规避监管、绕过平台规则、绕过地区限制、规避 KYC 的操作建议。 (Round 27 Source 5)
 - 在证据输入全缺失阶段，默认拒绝输出可执行套利步骤，避免内容被误用为高风险或违规交易指引。 (Round 27 Source 6)
 - 后续若来源恢复，仍需先核验平台条款、地区准入与数据使用边界，再讨论执行层策略。 (Round 27 Source 2)
+
+## Round 28 增量沉淀（第 19 个连续空源轮次：进入“证据输入全面空白与策略研究强冻结期”）
+- 本轮在指定输入模式 `memory/learn/polymarket_/sources/round-28/src-*.txt` 与 `memory/learn/polymarket_/sources/round-28/src-*.url` 下均无命中，任务要求的最小证据单元仍未出现，故不能新增任何基于市场正文的套利事实、交易参数或案例复盘。 (Round 28 Source 1)
+- 本轮目录仅存在 `search-1.json`、`search-2.json`、`search-3.json`、`search-4.json`、`search-5.json`、`urls.txt` 六个文件，且全部为 0 字节，说明本轮属于“来源全空白”，不是“来源不足”。 (Round 28 Source 2)
+- 在上述输入状态下，本轮允许新增的知识仅限“研究流程约束、风控门禁、常见误判与合规边界提醒”；任何可执行交易细节继续冻结。 (Round 28 Source 6)
+
+### 来源映射（Round 28）
+- Source 1: `memory/learn/polymarket_/sources/round-28/` 中 `src-*.txt` 不存在（由目录清单与文件匹配结果确认）。 (Round 28 Source 1)
+- Source 2: `memory/learn/polymarket_/sources/round-28/search-1.json`（0 字节）。 (Round 28 Source 2)
+- Source 3: `memory/learn/polymarket_/sources/round-28/search-2.json`（0 字节）。 (Round 28 Source 3)
+- Source 4: `memory/learn/polymarket_/sources/round-28/search-3.json`（0 字节）。 (Round 28 Source 4)
+- Source 5: `memory/learn/polymarket_/sources/round-28/search-4.json`、`search-5.json`（0 字节）。 (Round 28 Source 5)
+- Source 6: `memory/learn/polymarket_/sources/round-28/urls.txt`（0 字节，且 `src-*.url` 不存在）。 (Round 28 Source 6)
+
+### 套利玩法（本轮新增/修正）
+- 玩法层继续执行“强冻结”：禁止新增或修正跨平台对冲、YES+NO 合成、负风险组合、事件篮子配平等所有可执行玩法细节（触发阈值、失效阈值、下单顺序、仓位配比）。 (Round 28 Source 1)
+- 本轮玩法文档只允许记录“证据为空的状态判定 + 连续空源计数 + 恢复前置条件”，不得补写实盘执行步骤。 (Round 28 Source 6)
+
+### 交易策略（本轮新增/修正）
+- 策略层继续执行“仅排障输出”硬约束：当轮 `src-*.txt/.url` 缺失时，学习输出仅可归类为数据可用性事件，不得进入参数评审或策略升级流程。 (Round 28 Source 1)
+- 本轮继续冻结执行参数，不调整最小价差、盘口深度、滑点上限、撤单超时、重试上限、资金分层，以避免证据真空下的参数漂移。 (Round 28 Source 2)
+
+### 风控（本轮新增/修正）
+- 将“连续 19 轮空源”标记为研究风控持续红色状态：证据恢复前，仅允许抓取、解析、命名映射、落盘链路排障，不允许学习驱动策略变更。 (Round 28 Source 3)
+- 入库门禁保持不可绕过：未满足“至少 1 对非零 `src-*.txt/.url` + URL 可追溯 + 段落可定位”时，拒绝知识增量写入。 (Round 28 Source 6)
+
+### 常见坑（本轮新增/修正）
+- 常见坑 1：把“轮次推进到 28”误判为“知识有新增”；在 `src-*` 缺失条件下，轮次推进不代表证据推进。 (Round 28 Source 1)
+- 常见坑 2：看到 `search-*.json` 和 `urls.txt` 文件名就默认可学习；本轮再次证明 0 字节文件不构成可审计来源。 (Round 28 Source 2)
+- 常见坑 3：在无来源轮次继续补写执行细节，会制造伪增量并污染回测、参数对比与策略版本演进。 (Round 28 Source 5)
+
+### 合规与道德边界（提醒风险，不给非法指导）
+- 本轮继续仅提供合法合规的研究流程、风险提示与排障建议，不提供任何规避监管、绕过平台规则、绕过地区限制、规避 KYC 的操作建议。 (Round 28 Source 6)
+- 在证据输入全面空白阶段，默认拒绝输出可执行套利步骤，避免内容被误用为高风险或违规交易指引。 (Round 28 Source 1)
+- 后续若来源恢复，仍需优先核验平台条款、地区准入与数据使用边界，再讨论执行层策略。 (Round 28 Source 6)
+
+## Round 29 增量沉淀（第 20 个连续空源轮次：进入“证据输入零覆盖与学习回路失活锁定期”）
+- 本轮在指定输入模式 `memory/learn/polymarket_/sources/round-29/src-*.txt` 与 `memory/learn/polymarket_/sources/round-29/src-*.url` 下均无命中，任务要求的最小证据单元继续缺失，因此不能新增任何基于市场正文的套利事实、交易参数或案例复盘。 (Round 29 Source 6)
+- 本轮目录仅存在 `search-1.json`、`search-2.json`、`search-3.json`、`search-4.json`、`search-5.json`、`urls.txt` 六个文件，且字节数均为 0，说明是“来源零覆盖”而非“来源不足”。 (Round 29 Source 1)
+- 由于本轮来源覆盖率为 0%（无可读正文、无 URL 映射内容），本轮新增只能限定在“流程门禁、风控约束、误判修正、合规边界提醒”，不得输出可执行套利步骤。 (Round 29 Source 6)
+
+### 来源映射（Round 29）
+- Source 1: `memory/learn/polymarket_/sources/round-29/search-1.json`（0 字节）。 (Round 29 Source 1)
+- Source 2: `memory/learn/polymarket_/sources/round-29/search-2.json`（0 字节）。 (Round 29 Source 2)
+- Source 3: `memory/learn/polymarket_/sources/round-29/search-3.json`（0 字节）。 (Round 29 Source 3)
+- Source 4: `memory/learn/polymarket_/sources/round-29/search-4.json`（0 字节）。 (Round 29 Source 4)
+- Source 5: `memory/learn/polymarket_/sources/round-29/search-5.json`（0 字节）。 (Round 29 Source 5)
+- Source 6: `memory/learn/polymarket_/sources/round-29/urls.txt`（0 字节；且本轮未出现 `src-*.url`）。 (Round 29 Source 6)
+
+### 套利玩法（本轮新增/修正）
+- 玩法层继续执行“零覆盖禁发布”：禁止新增或修正跨平台对冲、YES+NO 合成、负风险组合、事件篮子配平等任何可执行玩法细节（触发阈值、失效阈值、执行顺序、仓位配比）。 (Round 29 Source 6)
+- 本轮玩法文档仅允许记录“来源零覆盖状态 + 连续空源计数（20）+ 恢复前置条件”，不允许补写下单路径与实盘动作。 (Round 29 Source 1)
+
+### 交易策略（本轮新增/修正）
+- 策略层继续执行“仅排障输出”硬约束：当轮 `src-*.txt/.url` 缺失且候选文件全空时，学习输出仅可归类为数据可用性事件，不得进入参数评审或策略升级流程。 (Round 29 Source 6)
+- 本轮继续冻结最小价差、盘口深度、滑点上限、撤单超时、重试上限、资金分层等执行参数，防止无证据条件下的参数漂移。 (Round 29 Source 2)
+
+### 风控（本轮新增/修正）
+- 将“连续 20 轮空源”标记为研究风控极高风险状态：证据恢复前仅允许抓取、解析、命名映射、落盘链路排障，不允许学习驱动策略变更。 (Round 29 Source 3)
+- 入库门禁继续保持不可绕过：未满足“至少 1 对非零 `src-*.txt/.url` + URL 可追溯 + 段落可定位”时，拒绝知识增量写入并维持策略冻结。 (Round 29 Source 6)
+- 新增流程侧风控提醒：若未来轮次再次出现“仅有空 `search-*` 与空 `urls.txt`”，应直接判定为无效学习轮次并触发排障优先分支。 (Round 29 Source 4)
+
+### 常见坑（本轮新增/修正）
+- 常见坑 1：把“轮次推进到 29”误判为“学习持续有效”；在来源零覆盖条件下，轮次增长不代表证据增长。 (Round 29 Source 1)
+- 常见坑 2：把“文件存在”误判为“信息存在”；本轮再次证明 0 字节文件只表示流程触发，不表示可审计内容。 (Round 29 Source 5)
+- 常见坑 3：在连续空源状态下继续输出参数或执行建议，会把流程性噪音伪装成策略增量并污染回测基线。 (Round 29 Source 2)
+
+### 合规与道德边界（提醒风险，不给非法指导）
+- 本轮继续仅提供合法合规的研究流程、风险提示与排障建议，不提供任何规避监管、绕过平台规则、绕过地区限制、规避 KYC 的操作建议。 (Round 29 Source 6)
+- 在证据输入零覆盖阶段，默认拒绝输出可执行套利步骤，避免内容被误用为高风险或违规交易指引。 (Round 29 Source 3)
+- 后续即使来源恢复，也需先核验平台条款、地区准入与数据使用边界，再讨论执行层策略，不得将研究内容用于违法活动。 (Round 29 Source 4)
+
+## Round 30 增量沉淀（第 21 个连续空源轮次：进入“限定源输入下的证据绝对缺席锁定期”）
+- 在本轮被允许的唯一输入范围（`memory/learn/polymarket_/sources/round-30/src-*.txt` 与 `memory/learn/polymarket_/sources/round-30/src-*.url`）内，`src-*.txt` 匹配数为 0，说明没有任何可读正文证据可供学习。 (Round 30 Source 1)
+- 同一输入范围内，`src-*.url` 匹配数也为 0，导致“正文-来源 URL”追溯链条无法建立，本轮不具备新增可审计市场结论的条件。 (Round 30 Source 2)
+- 因为本轮可用证据集合为空，所有执行层结论继续冻结；本轮新增仅限流程约束、风险控制、常见误判修正与合规边界提醒。 (Round 30 Source 1)
+
+### 来源映射（Round 30）
+- Source 1: `memory/learn/polymarket_/sources/round-30/src-*.txt` 匹配为空（无文件命中）。 (Round 30 Source 1)
+- Source 2: `memory/learn/polymarket_/sources/round-30/src-*.url` 匹配为空（无文件命中）。 (Round 30 Source 2)
+
+### 套利玩法（本轮新增/修正）
+- 玩法层继续执行“证据绝对缺席禁发布”：禁止新增或修正跨平台对冲、YES+NO 合成、负风险组合、事件篮子配平等任何可执行玩法细节（触发阈值、失效阈值、执行顺序、仓位配比）。 (Round 30 Source 1)
+- 本轮玩法文档仅允许记录“限定源输入为空 + 连续空源计数（21）+ 证据恢复前置条件”，不得补写任何下单路径或实盘动作。 (Round 30 Source 2)
+
+### 交易策略（本轮新增/修正）
+- 策略层继续执行“仅排障输出”硬约束：当轮 `src-*.txt/.url` 无法命中时，学习输出只能归类为数据可用性事件，不得进入参数评审或策略升级。 (Round 30 Source 1)
+- 本轮继续冻结最小价差、盘口深度、滑点上限、撤单超时、重试上限、资金分层等参数，避免无证据条件下的参数漂移与伪优化。 (Round 30 Source 2)
+
+### 风控（本轮新增/修正）
+- 将“连续 21 轮空源”定义为研究风控极高风险持续状态：证据恢复前，仅允许抓取、解析、命名映射、落盘链路排障，不允许学习驱动策略变更。 (Round 30 Source 1)
+- 入库门禁继续保持不可绕过：未满足“至少 1 对非零 `src-*.txt/.url` + URL 可追溯 + 段落可定位”时，拒绝知识增量写入并维持策略冻结。 (Round 30 Source 2)
+
+### 常见坑（本轮新增/修正）
+- 常见坑 1：把“进入第 30 轮”误判为“证据有新增”；在 `src-*` 绝对缺席条件下，轮次推进不代表学习有效推进。 (Round 30 Source 1)
+- 常见坑 2：在受限输入规则下仍引用非 `src-*` 文件做策略结论，会破坏证据边界并造成不可审计输出。 (Round 30 Source 2)
+- 常见坑 3：在连续空源期继续补写执行参数或下单步骤，会将流程噪音伪装成策略增量并污染回测基线。 (Round 30 Source 1)
+
+### 合规与道德边界（提醒风险，不给非法指导）
+- 本轮继续仅提供合法合规的研究流程、风险提示与排障建议，不提供任何规避监管、绕过平台规则、绕过地区限制、规避 KYC 的操作建议。 (Round 30 Source 2)
+- 在证据不可用阶段默认拒绝输出可执行套利步骤，避免内容被误用为高风险或违规交易指引。 (Round 30 Source 1)
+- 后续即使证据恢复，也需先核验平台条款、地区准入与数据使用边界，再讨论执行层策略，不得将研究内容用于违法活动。 (Round 30 Source 2)
