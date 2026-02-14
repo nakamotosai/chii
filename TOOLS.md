@@ -39,8 +39,10 @@
 - 示例：`curl -fsS "http://127.0.0.1:8081/search?q=openclaw&format=json"`
 
 ### 记忆查找：QMD（collection: memory）
+- QMD 完全在本地运行，不需要外部 API key，直接操作 qmd search/query 即可；如果遇到认证错误，多半是由于初始配置未同步。
 - 示例：`qmd search "关键词" -c memory -n 10 --json`
 - 示例：`qmd query "我之前对X的偏好是什么" -c memory -n 10 --json`
+- ⚠️ 记忆检索请优先使用 qmd 系列命令，它们不依赖外部认证；`memory_search` 目前因 API key 缺失而无法正常使用，仅在系统明确要求或你自行配置好凭据后再调用。
 
 ## MCP（mcporter）已接通：SearXNG + QMD
 
