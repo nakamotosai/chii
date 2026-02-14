@@ -1,11 +1,11 @@
 # Evidence Snapshot
 
-- ts_utc: 2026-02-14T02:03:26Z
+- ts_utc: 2026-02-14T03:03:14Z
 - workspace: /home/ubuntu/.openclaw/workspace
 
 ## Git
 - branch: main
-- head: 4a88a88
+- head: 00cf9e6
 - dirty: 1 files
 
 ### Changed Files (tracked diff)
@@ -20,21 +20,21 @@ Index: /home/ubuntu/.cache/qmd/index.sqlite
 Size:  392.0 KB
 
 Documents
-  Total:    28 files indexed
+  Total:    30 files indexed
   Vectors:  0 embedded
-  Pending:  24 need embedding (run 'qmd embed')
-  Updated:  51m ago
+  Pending:  25 need embedding (run 'qmd embed')
+  Updated:  28m ago
 
 Collections
   daily-logs (qmd://daily-logs/)
     Pattern:  **/*.md
-    Files:    17 (updated 51m ago)
+    Files:    18 (updated 32m ago)
   workspace (qmd://workspace/)
     Pattern:  *.md
-    Files:    7 (updated 8h ago)
+    Files:    7 (updated 28m ago)
   memory (qmd://memory/)
     Pattern:  *.md
-    Files:    4 (updated 3h ago)
+    Files:    5 (updated 32m ago)
 
 Examples
   # List files in a collection
@@ -50,7 +50,7 @@ mcporter 0.7.3 — Listing 5 server(s) (per-server timeout: 30s)
 - tasks (2 tools, 0.1s)
 - fetch (1 tool, 0.1s)
 - searxng (1 tool, 0.2s)
-- qmd (6 tools, 0.5s)
+- qmd (6 tools, 0.6s)
 ✔ Listed 5 servers (5 healthy).
 
 ## Recent Logs (top 20)
