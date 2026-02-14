@@ -1,11 +1,11 @@
 # Evidence Snapshot
 
-- ts_utc: 2026-02-14T00:41:15Z
+- ts_utc: 2026-02-14T00:41:33Z
 - workspace: /home/ubuntu/.openclaw/workspace
 
 ## Git
 - branch: main
-- head: 4cdf3a3
+- head: 4f0910f
 - dirty: 1 files
 
 ### Changed Files (tracked diff)
@@ -46,11 +46,11 @@ Examples
 
 ## MCP (mcporter)
 mcporter 0.7.3 — Listing 5 server(s) (per-server timeout: 30s)
+- github (1 tool, 0.1s)
 - fetch (1 tool, 0.1s)
 - tasks (2 tools, 0.1s)
-- github (1 tool, 0.1s)
 - searxng (1 tool, 0.2s)
-- qmd (6 tools, 0.5s)
+- qmd (6 tools, 0.6s)
 ✔ Listed 5 servers (5 healthy).
 
 ## Recent Logs (top 20)
