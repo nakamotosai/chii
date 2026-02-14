@@ -1,0 +1,10 @@
+{
+  "jobId": "codex-20260214-180001",
+  "createdAtUtc": "2026-02-14T18:00:02Z",
+  "status": "done",
+  "chatId": "",
+  "notified": false,
+  "runnerPid": 1430038,
+  "lastMsg": "/home/ubuntu/.openclaw/workspace/logs/codex/last-20260214-180002.md",
+  "finishedAtUtc": "2026-02-14T18:01:05Z"
+}
