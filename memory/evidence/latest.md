@@ -1,33 +1,17 @@
 # Evidence Snapshot
 
-- ts_utc: 2026-02-14T17:01:20Z
+- ts_utc: 2026-02-14T17:04:04Z
 - workspace: /home/ubuntu/.openclaw/workspace
 
 ## Git
 - branch: main
-- head: fabc42e
-- dirty: 12 files
+- head: 16ba298
+- dirty: 1 files
 
 ### Changed Files (tracked diff)
-logs/codex/jobs/latest.json
 memory/evidence/latest.md
-memory/learn/polymarket_/kb.md
-memory/learn/polymarket_/questions.md
-memory/learn/polymarket_/sources.md
-memory/learn/polymarket_/state.json
 
 ### Untracked (top 50)
-logs/codex/events-20260214-170001.jsonl
-logs/codex/jobs/codex-20260214-170001.json
-logs/codex/jobs/codex-20260214-170001.log
-logs/codex/jobs/codex-20260214-170001.sh
-logs/codex/last-20260214-170001.md
-memory/learn/polymarket_/sources/round-20/search-1.json
-memory/learn/polymarket_/sources/round-20/search-2.json
-memory/learn/polymarket_/sources/round-20/search-3.json
-memory/learn/polymarket_/sources/round-20/search-4.json
-memory/learn/polymarket_/sources/round-20/search-5.json
-memory/learn/polymarket_/sources/round-20/urls.txt
 
 ## QMD
 QMD Status
@@ -39,18 +23,18 @@ Documents
   Total:    36 files indexed
   Vectors:  0 embedded
   Pending:  30 need embedding (run 'qmd embed')
-  Updated:  10m ago
+  Updated:  2m ago
 
 Collections
   daily-logs (qmd://daily-logs/)
     Pattern:  **/*.md
-    Files:    23 (updated 10m ago)
+    Files:    23 (updated 2m ago)
   workspace (qmd://workspace/)
     Pattern:  *.md
     Files:    7 (updated 2h ago)
   memory (qmd://memory/)
     Pattern:  *.md
-    Files:    6 (updated 20m ago)
+    Files:    6 (updated 22m ago)
 
 Examples
   # List files in a collection
@@ -61,26 +45,32 @@ Examples
   qmd search "query" -c daily-logs
 
 ## MCP (mcporter)
-- mcporter: not installed
+mcporter 0.7.3 — Listing 5 server(s) (per-server timeout: 30s)
+- fetch (1 tool, 0.1s)
+- github (1 tool, 0.2s)
+- tasks (2 tools, 0.2s)
+- searxng (1 tool, 0.3s)
+- qmd (6 tools, 0.6s)
+✔ Listed 5 servers (5 healthy).
 
 ## Recent Logs (top 20)
-2026-02-15T01:01:20.8248144540Z /home/ubuntu/.openclaw/workspace/logs/codex/last-20260214-170001.md
-2026-02-15T01:01:20.8248144540Z /home/ubuntu/.openclaw/workspace/logs/codex/events-20260214-170001.jsonl
-2026-02-15T01:00:01.6713705160Z /home/ubuntu/.openclaw/workspace/logs/codex/jobs/codex-20260214-170001.json
-2026-02-15T01:00:01.6524389060Z /home/ubuntu/.openclaw/workspace/logs/codex/.codex.lock
-2026-02-15T01:00:01.6444388690Z /home/ubuntu/.openclaw/workspace/logs/codex/jobs/codex-20260214-170001.log
-2026-02-15T01:00:01.6424388590Z /home/ubuntu/.openclaw/workspace/logs/codex/jobs/codex-20260214-170001.sh
-2026-02-15T01:00:01.6366604320Z /home/ubuntu/.openclaw/workspace/logs/codex/jobs/latest.json
-2026-02-15T00:51:12.1659321080Z /home/ubuntu/.openclaw/workspace/logs/codex/jobs/codex-20260214-165001.log
-2026-02-15T00:51:09.2273779150Z /home/ubuntu/.openclaw/workspace/logs/codex/jobs/codex-20260214-165001.json
-2026-02-15T00:51:08.8229163260Z /home/ubuntu/.openclaw/workspace/logs/codex/last-20260214-165001.md
-2026-02-15T00:51:08.8229163260Z /home/ubuntu/.openclaw/workspace/logs/codex/events-20260214-165001.jsonl
-2026-02-15T00:50:01.4235983230Z /home/ubuntu/.openclaw/workspace/logs/codex/jobs/codex-20260214-165001.sh
-2026-02-15T00:41:32.7822147890Z /home/ubuntu/.openclaw/workspace/logs/codex/jobs/codex-20260214-164001.log
-2026-02-15T00:41:29.8195081880Z /home/ubuntu/.openclaw/workspace/logs/codex/jobs/codex-20260214-164001.json
-2026-02-15T00:41:29.4121991360Z /home/ubuntu/.openclaw/workspace/logs/codex/last-20260214-164001.md
-2026-02-15T00:41:29.4121991360Z /home/ubuntu/.openclaw/workspace/logs/codex/events-20260214-164001.jsonl
-2026-02-15T00:40:01.8342750100Z /home/ubuntu/.openclaw/workspace/logs/codex/jobs/codex-20260214-164001.sh
-2026-02-15T00:31:42.2115298280Z /home/ubuntu/.openclaw/workspace/logs/codex/jobs/codex-20260214-163001.log
-2026-02-15T00:31:39.2464572990Z /home/ubuntu/.openclaw/workspace/logs/codex/jobs/codex-20260214-163001.json
-2026-02-15T00:31:38.8335149620Z /home/ubuntu/.openclaw/workspace/logs/codex/last-20260214-163001.md
+2026-02-15T02:02:07.8222988040Z /home/ubuntu/.openclaw/workspace/logs/magi/latest.md
+2026-02-15T02:02:07.8216509210Z /home/ubuntu/.openclaw/workspace/logs/magi/latest.json
+2026-02-15T02:02:07.8214364400Z /home/ubuntu/.openclaw/workspace/logs/magi/20260214-170123/result.md
+2026-02-15T02:02:07.8213260000Z /home/ubuntu/.openclaw/workspace/logs/magi/20260214-170123/result.json
+2026-02-15T02:02:07.6750367460Z /home/ubuntu/.openclaw/workspace/logs/magi/20260214-170123/magi-casper.json
+2026-02-15T02:01:52.0769627320Z /home/ubuntu/.openclaw/workspace/logs/magi/20260214-170123/magi-casper.err
+2026-02-15T02:01:51.9579621680Z /home/ubuntu/.openclaw/workspace/logs/magi/20260214-170123/magi-melchior.json
+2026-02-15T02:01:35.2088826980Z /home/ubuntu/.openclaw/workspace/logs/magi/20260214-170123/magi-melchior.err
+2026-02-15T02:01:35.0838821050Z /home/ubuntu/.openclaw/workspace/logs/magi/20260214-170123/magi-balthasar.json
+2026-02-15T02:01:24.2148305380Z /home/ubuntu/.openclaw/workspace/logs/codex/jobs/codex-20260214-170001.log
+2026-02-15T02:01:23.0318249250Z /home/ubuntu/.openclaw/workspace/logs/magi/20260214-170123/magi-balthasar.err
+2026-02-15T02:01:21.2396480230Z /home/ubuntu/.openclaw/workspace/logs/codex/jobs/latest.json
+2026-02-15T02:01:21.2394580220Z /home/ubuntu/.openclaw/workspace/logs/codex/jobs/codex-20260214-170001.json
+2026-02-15T02:01:20.8248144540Z /home/ubuntu/.openclaw/workspace/logs/codex/last-20260214-170001.md
+2026-02-15T02:01:20.8248144540Z /home/ubuntu/.openclaw/workspace/logs/codex/events-20260214-170001.jsonl
+2026-02-15T02:00:01.6524389060Z /home/ubuntu/.openclaw/workspace/logs/codex/.codex.lock
+2026-02-15T02:00:01.6424388590Z /home/ubuntu/.openclaw/workspace/logs/codex/jobs/codex-20260214-170001.sh
+2026-02-15T01:51:12.1659321080Z /home/ubuntu/.openclaw/workspace/logs/codex/jobs/codex-20260214-165001.log
+2026-02-15T01:51:09.2273779150Z /home/ubuntu/.openclaw/workspace/logs/codex/jobs/codex-20260214-165001.json
+2026-02-15T01:51:08.8229163260Z /home/ubuntu/.openclaw/workspace/logs/codex/last-20260214-165001.md
