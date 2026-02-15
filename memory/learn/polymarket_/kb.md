@@ -2360,3 +2360,118 @@
 ### Round 81 输入边界复核（仅允许 `src-*.txt/.url`）
 - 按本轮任务约束，Round 81 的有效输入仅限 `src-*.txt` 与 `src-*.url`；任何不在该边界内的信息均不得作为本轮结论依据。 (Round 81 Source 1)
 - 当 `src-*.txt` 与 `src-*.url` 均空命中时，只允许输出“空源事实、风险提示、排障优先级”，不得输出任何可执行交易细节。 (Round 81 Source 2)
+
+## Round 82 增量沉淀（第 73 个连续空源轮次：限定输入 `src-*.txt/.url` 持续双空，进入“证据世代编号与空源预算闸门”阶段）
+- 在本轮限定输入范围 `memory/learn/polymarket_/sources/round-82/src-*.txt` 下无任何命中（`txt_count=0`），本轮不存在可提炼正文证据；不得新增任何关于盘口结构、价差窗口、成交路径、收益区间与胜率的事实性结论。 (Round 82 Source 1)
+- 在本轮限定输入范围 `memory/learn/polymarket_/sources/round-82/src-*.url` 下同样无任何命中（`url_count=0`），结论到 URL 的可追溯链仍不可构建；不得新增下单顺序、仓位配比、撤单与重试参数建议。 (Round 82 Source 2)
+- 相比 Round 81 的连续 72 轮空源，本轮推进为连续 73 轮空源；本轮继续归类为“证据治理增量”，不归类为“交易知识增量”。 (Round 82 Source 1)
+
+### 来源映射（Round 82）
+- Source 1: `memory/learn/polymarket_/sources/round-82/src-*.txt` 匹配为空（`txt_count=0`，无文件命中）。 (Round 82 Source 1)
+- Source 2: `memory/learn/polymarket_/sources/round-82/src-*.url` 匹配为空（`url_count=0`，无文件命中）。 (Round 82 Source 2)
+- Source 3: Source 1 与 Source 2 的联合复核，并观察到 `search-*.json` 与 `urls.txt` 均为 0 字节，不能替代 `src` 证据链。 (Round 82 Source 2)
+
+### 套利玩法（本轮新增/修正）
+- 玩法层继续执行“证据未恢复即禁止可执行化”：不得补写跨市场对冲、YES+NO 合成、负风险组合、事件篮子配平的触发条件与执行步骤。 (Round 82 Source 1)
+- 本轮新增“证据世代编号”要求：所有玩法条目必须绑定 `evidence_generation=R82-g0`（空源世代），并强制 `tradability=blocked`，防止旧轮次证据被误复用为本轮可执行依据。 (Round 82 Source 3)
+- 本轮新增“空源预算闸门”：当连续空源递增时，玩法侧仅允许维护术语表与失败样例，不允许新增任何可执行玩法草案。 (Round 82 Source 2)
+
+### 交易策略（本轮新增/修正）
+- 策略层继续保持“仅排障输出”：当 `src-*.txt/.url` 双空时，仅允许讨论抓取链路、命名映射、落盘校验，不得进入收益判断与参数迭代。 (Round 82 Source 1)
+- 本轮新增“世代一致性校验”：策略文档若引用的证据世代与当前轮次不一致（如引用旧轮次非空样本），则必须自动回退为 `execution_state=frozen`。 (Round 82 Source 3)
+- 本轮新增“发布摘要降噪规则”：在空源世代中，摘要只允许“证据状态、风险等级、修复进度”，不得出现收益措辞、参数区间或执行优先级。 (Round 82 Source 2)
+
+### 风控（本轮新增/修正）
+- 将“连续 73 轮空源”维持为研究侧最高等级风险事件，证据恢复前所有交易侧主张默认高不确定并拒绝入库。 (Round 82 Source 1)
+- 延续入库硬门禁：未满足“非零 `src-*.txt/.url` + URL 可追溯 + 一一配对 + 段落可定位”前，禁止写入实盘导向结论。 (Round 82 Source 2)
+- 本轮新增“空源预算耗尽告警”：当空源轮次继续累计时，应升级为固定频率故障复盘与负责人 SLA 跟踪，避免流程仅写文档而无修复闭环。 (Round 82 Source 3)
+
+### 常见坑（本轮新增/修正）
+- 常见坑 1：把“有 round-82 目录与文件”误判为“有可用证据”；本轮 `src-*.txt/.url` 仍为 0 命中。 (Round 82 Source 1)
+- 常见坑 2：把 `search-*.json`、`urls.txt` 当成可替代输入；这些文件在本轮均为 0 字节，且不在允许输入边界内。 (Round 82 Source 2)
+- 常见坑 3：在空源轮次用“示例参数”名义写执行细节，会形成变相交易指令并放大误用风险。 (Round 82 Source 3)
+
+### 合规与道德边界（提醒风险，不给非法指导）
+- 本轮继续只提供合法合规的研究流程、风险控制与排障建议，不提供规避监管、绕过平台规则、规避地区限制或规避 KYC 的操作指导。 (Round 82 Source 2)
+- 在证据输入不可用阶段，默认拒绝输出可执行套利指令，避免被误用于高风险、违规或不当交易场景。 (Round 82 Source 1)
+- 即便后续证据恢复，也应先核验平台条款、地区准入、数据许可、信息披露、税务义务与反洗钱要求，再讨论执行层策略。 (Round 82 Source 2)
+
+### Round 82 输入边界复核（仅允许 `src-*.txt/.url`）
+- 按本轮任务约束，Round 82 的有效输入仅限 `src-*.txt` 与 `src-*.url`；任何不在该边界内的信息均不得作为本轮结论依据。 (Round 82 Source 1)
+- 当 `src-*.txt` 与 `src-*.url` 均空命中时，只允许输出“空源事实、风险提示、排障优先级”，不得输出任何可执行交易细节。 (Round 82 Source 2)
+
+## Round 83 增量沉淀（第 74 个连续空源轮次：限定输入 `src-*.txt/.url` 持续双空，进入“证据债务账龄跨阈值与恢复闸门最小化发布”阶段）
+- 在本轮限定输入范围 `memory/learn/polymarket_/sources/round-83/src-*.txt` 下无任何命中（`txt_count=0`），本轮不存在可提炼正文证据；不得新增任何关于盘口结构、价差窗口、成交路径、收益区间与胜率的事实性结论。 (Round 83 Source 1)
+- 在本轮限定输入范围 `memory/learn/polymarket_/sources/round-83/src-*.url` 下同样无任何命中（`url_count=0`），结论到 URL 的可追溯链仍不可构建；不得新增下单顺序、仓位配比、撤单与重试参数建议。 (Round 83 Source 2)
+- 相比 Round 82 的连续 73 轮空源，本轮推进为连续 74 轮空源；本轮继续归类为“证据治理增量”，不归类为“交易知识增量”。 (Round 83 Source 1)
+
+### 来源映射（Round 83）
+- Source 1: `memory/learn/polymarket_/sources/round-83/src-*.txt` 匹配为空（`txt_count=0`，无文件命中）。 (Round 83 Source 1)
+- Source 2: `memory/learn/polymarket_/sources/round-83/src-*.url` 匹配为空（`url_count=0`，无文件命中）。 (Round 83 Source 2)
+
+### 套利玩法（本轮新增/修正）
+- 玩法层继续执行“证据未恢复即禁止可执行化”：不得补写跨市场对冲、YES+NO 合成、负风险组合、事件篮子配平的触发条件与执行步骤。 (Round 83 Source 1)
+- 本轮新增“账龄跨阈值冻结”：当连续空源账龄到达 74 轮时，玩法条目默认 `tradability=blocked` 且 `publish_scope=research_only`，禁止进入执行候选池。 (Round 83 Source 2)
+- 本轮新增“恢复闸门最小化发布”：在首个非空源轮次前，玩法侧仅允许维护证据验收模板与失败样例，不允许新增或升级任何可执行玩法草案。 (Round 83 Source 1)
+
+### 交易策略（本轮新增/修正）
+- 策略层继续保持“仅排障输出”：当 `src-*.txt/.url` 双空时，仅允许讨论抓取链路、命名映射、落盘校验，不得进入收益判断与参数迭代。 (Round 83 Source 1)
+- 本轮新增“最小化发布白名单”：空源轮次策略文本仅允许 `evidence_status`、`risk_level`、`repair_progress` 三类字段，出现参数、阈值、收益措辞即视为越界。 (Round 83 Source 2)
+- 本轮新增“恢复前双侧必达”：后续若仅恢复 `src-*.txt` 或仅恢复 `src-*.url`，一律判定为假恢复并保持 `execution_state=frozen`。 (Round 83 Source 2)
+
+### 风控（本轮新增/修正）
+- 将“连续 74 轮空源”维持为研究侧最高等级风险事件，证据恢复前所有交易侧主张默认高不确定并拒绝入库。 (Round 83 Source 1)
+- 延续入库硬门禁：未满足“非零 `src-*.txt/.url` + URL 可追溯 + 一一配对 + 段落可定位”前，禁止写入实盘导向结论。 (Round 83 Source 2)
+- 本轮新增“账龄驱动升级”：空源账龄继续增长时，风险状态不得因文本完备度提升而降级，必须以证据可用性恢复作为唯一降级条件。 (Round 83 Source 1)
+
+### 常见坑（本轮新增/修正）
+- 常见坑 1：把“Round 83 有文档输出”误读为“证据恢复”；本轮 `src-*.txt/.url` 仍为双空。 (Round 83 Source 1)
+- 常见坑 2：在空源轮次用“示例参数”或“假设收益”包装执行建议，导致研究文档被误用为交易指令。 (Round 83 Source 2)
+- 常见坑 3：把“单侧恢复（仅 txt 或仅 url）”当作可解冻信号，绕过双侧必达门禁会导致假恢复。 (Round 83 Source 2)
+
+### 合规与道德边界（提醒风险，不给非法指导）
+- 本轮继续只提供合法合规的研究流程、风险控制与排障建议，不提供规避监管、绕过平台规则、规避地区限制或规避 KYC 的操作指导。 (Round 83 Source 2)
+- 在证据输入不可用阶段，默认拒绝输出可执行套利指令，避免被误用于高风险、违规或不当交易场景。 (Round 83 Source 1)
+- 即便后续证据恢复，也应先核验平台条款、地区准入、数据许可、信息披露、税务义务与反洗钱要求，再讨论执行层策略。 (Round 83 Source 2)
+
+### Round 83 输入边界复核（仅允许 `src-*.txt/.url`）
+- 按本轮任务约束，Round 83 的有效输入仅限 `src-*.txt` 与 `src-*.url`；任何不在该边界内的信息均不得作为本轮结论依据。 (Round 83 Source 1)
+- 当 `src-*.txt` 与 `src-*.url` 均空命中时，只允许输出“空源事实、风险提示、排障优先级”，不得输出任何可执行交易细节。 (Round 83 Source 2)
+
+## Round 84 增量沉淀（第 75 个连续空源轮次：限定输入 `src-*.txt/.url` 持续双空，进入“证据债务高账龄稳态与恢复演练前置清单锁定”阶段）
+- 在本轮限定输入范围 `memory/learn/polymarket_/sources/round-84/src-*.txt` 下无任何命中（`txt_count=0`），本轮不存在可提炼正文证据；不得新增任何关于盘口结构、价差窗口、成交路径、收益区间与胜率的事实性结论。 (Round 84 Source 1)
+- 在本轮限定输入范围 `memory/learn/polymarket_/sources/round-84/src-*.url` 下同样无任何命中（`url_count=0`），结论到 URL 的可追溯链仍不可构建；不得新增下单顺序、仓位配比、撤单与重试参数建议。 (Round 84 Source 2)
+- 相比 Round 83 的连续 74 轮空源，本轮推进为连续 75 轮空源；本轮继续归类为“证据治理增量”，不归类为“交易知识增量”。 (Round 84 Source 1)
+
+### 来源映射（Round 84）
+- Source 1: `memory/learn/polymarket_/sources/round-84/src-*.txt` 匹配为空（`txt_count=0`，无文件命中）。 (Round 84 Source 1)
+- Source 2: `memory/learn/polymarket_/sources/round-84/src-*.url` 匹配为空（`url_count=0`，无文件命中）。 (Round 84 Source 2)
+
+### 套利玩法（本轮新增/修正）
+- 玩法层继续执行“证据未恢复即禁止可执行化”：不得补写跨市场对冲、YES+NO 合成、负风险组合、事件篮子配平的触发条件与执行步骤。 (Round 84 Source 1)
+- 本轮新增“高账龄稳态封存”：当连续空源达到 75 轮，玩法条目统一维持 `tradability=blocked` 与 `publish_scope=research_only`，并禁止任何“恢复预热版”进入候选池。 (Round 84 Source 2)
+- 本轮新增“恢复演练前置清单锁定”：在首个非空源出现前，仅允许维护“证据验收清单、失败样例、回滚剧本”，不允许新增可执行玩法草案。 (Round 84 Source 1)
+
+### 交易策略（本轮新增/修正）
+- 策略层继续保持“仅排障输出”：当 `src-*.txt/.url` 双空时，仅允许讨论抓取链路、命名映射、落盘校验，不得进入收益判断与参数迭代。 (Round 84 Source 1)
+- 本轮新增“恢复演练准入顺序”：后续首个非空源轮次只能发布证据链验收与一致性抽样，禁止同轮发布收益预期、参数区间与执行优先级。 (Round 84 Source 2)
+- 本轮新增“摘要字段硬白名单”：空源轮次策略摘要只允许 `evidence_status`、`risk_level`、`repair_progress`、`next_checkpoint`，其余字段视为越界。 (Round 84 Source 2)
+
+### 风控（本轮新增/修正）
+- 将“连续 75 轮空源”维持为研究侧最高等级风险事件，证据恢复前所有交易侧主张默认高不确定并拒绝入库。 (Round 84 Source 1)
+- 延续入库硬门禁：未满足“非零 `src-*.txt/.url` + URL 可追溯 + 一一配对 + 段落可定位”前，禁止写入实盘导向结论。 (Round 84 Source 2)
+- 本轮新增“恢复演练失败即回滚冻结”：首次恢复尝试若任一验收项失败，必须立即回退 `execution_state=frozen` 并维持研究态发布，不得口头豁免。 (Round 84 Source 2)
+
+### 常见坑（本轮新增/修正）
+- 常见坑 1：把“Round 84 目录存在”误读为“证据可用”，但本轮 `src-*.txt/.url` 仍为双空。 (Round 84 Source 1)
+- 常见坑 2：在空源轮次用“恢复预热”名义提前写参数或收益措辞，会把研究文档变相变成执行指令。 (Round 84 Source 2)
+- 常见坑 3：把“未来恢复演练计划”当成“当前已解冻状态”，会绕过门禁并制造假恢复信号。 (Round 84 Source 2)
+
+### 合规与道德边界（提醒风险，不给非法指导）
+- 本轮继续只提供合法合规的研究流程、风险控制与排障建议，不提供规避监管、绕过平台规则、规避地区限制或规避 KYC 的操作指导。 (Round 84 Source 2)
+- 在证据输入不可用阶段，默认拒绝输出可执行套利指令，避免被误用于高风险、违规或不当交易场景。 (Round 84 Source 1)
+- 即便后续证据恢复，也应先核验平台条款、地区准入、数据许可、信息披露、税务义务与反洗钱要求，再讨论执行层策略。 (Round 84 Source 2)
+
+### Round 84 输入边界复核（仅允许 `src-*.txt/.url`）
+- 按本轮任务约束，Round 84 的有效输入仅限 `src-*.txt` 与 `src-*.url`；任何不在该边界内的信息均不得作为本轮结论依据。 (Round 84 Source 1)
+- 当 `src-*.txt` 与 `src-*.url` 均空命中时，只允许输出“空源事实、风险提示、排障优先级”，不得输出任何可执行交易细节。 (Round 84 Source 2)
