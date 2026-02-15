@@ -1,0 +1,3 @@
+interface:
+  display_name: "Telegram File Staging"
+  short_description: "Stage files into Telegram-safe upload paths"

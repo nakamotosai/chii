@@ -3,8 +3,11 @@
   "createdAtUtc": "2026-02-14T19:20:01Z",
   "status": "done",
   "chatId": "",
-  "notified": false,
+  "notified": true,
   "runnerPid": 1471539,
   "lastMsg": "/home/ubuntu/.openclaw/workspace/logs/codex/last-20260214-192001.md",
-  "finishedAtUtc": "2026-02-14T19:21:07Z"
+  "finishedAtUtc": "2026-02-14T19:21:07Z",
+  "notifyState": "skipped_invalid_chat",
+  "notifiedAtUtc": "2026-02-15T01:11:03Z",
+  "notifyNote": "chat_id_empty_or_zero"
 }
